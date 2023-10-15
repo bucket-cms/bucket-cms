@@ -19,7 +19,7 @@ function SignIn({ isTestEnv }: { isTestEnv: boolean }) {
             className={cn("h-auto hover:scale-105 transition-all ease-in-out", isLoading && "opacity-30")}
             onClick={() => {
               setIsLoading(true)
-              signIn("github", { callbackUrl: window.location.href })
+              signIn("github", { callbackUrl: window.location.href + "/api/auth/callback/github" })
             }}
             type="button"
           >
