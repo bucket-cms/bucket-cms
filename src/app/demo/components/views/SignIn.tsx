@@ -12,7 +12,7 @@ function SignIn({ isTestEnv }: { isTestEnv: boolean }) {
       <div className="grow text-center border-t py-12">
         <BrandImage />
         <PageHeading>Welcome to Bucket</PageHeading>
-        <p className="text-blue-800 opacity-70 font-medium pb-12">Please sign in with an authentication provider to access the demo</p>
+        <p className="text-blue-800 opacity-70 font-medium pb-12 px-8">Please sign in with an authentication provider to access the demo</p>
         <div className="flex flex-col gap-4 w-[240px] mx-auto">
           <Button
             disabled={isLoading}
