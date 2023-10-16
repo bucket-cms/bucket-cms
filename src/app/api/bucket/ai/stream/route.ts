@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getStream } from "../util"
 
-export const config = {
-  runtime: "edge",
-}
+export const runtime = "edge"
 
 export async function POST(req: NextRequest) {
   const { messages } = await req.json()
