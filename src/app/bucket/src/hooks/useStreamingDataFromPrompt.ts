@@ -55,8 +55,6 @@ export const useStreamingDataFromPrompt = async ({
   let done = false
   let responseString = ""
 
-  console.log("reading stream...")
-
   setTimeout(() => {
     if (responseString === "") {
       console.log("stream response timeout")
@@ -71,8 +69,6 @@ export const useStreamingDataFromPrompt = async ({
   while (!done) {
     try {
       const { value, done: doneReading } = await reader.read()
-      console.log("Received chunk:", decoder.decode(value))
-      console.log("Stream locked status:", stream.locked)
       done = doneReading
       responseString += decoder.decode(value)
       onData(responseString)
@@ -82,7 +78,6 @@ export const useStreamingDataFromPrompt = async ({
   }
 
   if (done && onDone) {
-    console.log("useStreamingDataFromPrompt done")
     onDone(responseString)
   }
   return

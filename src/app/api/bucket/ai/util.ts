@@ -11,7 +11,6 @@ export async function getStream(body: ChatCompletionCreateParamsStreaming) {
   if (!openai) {
     return null
   }
-  console.log("Sending to OpenAI with body:", body)
   const chatStream = await openai.chat.completions.create(body)
 
   const encoder = new TextEncoder()
@@ -19,18 +18,13 @@ export async function getStream(body: ChatCompletionCreateParamsStreaming) {
   const stream = new ReadableStream({
     async start(controller) {
       for await (const part of chatStream) {
-        console.log("Received from OpenAI:", part)
         if (part?.choices) {
-          if (part.choices[0]?.finish_reason) {
-            console.log("Finish reason:", part.choices[0]?.finish_reason)
-          }
           const chunk = part.choices[0]?.delta?.content || part.choices[0]?.delta?.function_call?.arguments || ""
           if (chunk) {
             controller.enqueue(encoder.encode(chunk))
           }
         }
       }
-      console.log("Stream ended, closing controller")
       // Close the controller once all data has been read
       controller.close()
     },
