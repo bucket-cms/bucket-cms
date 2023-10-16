@@ -2,18 +2,13 @@ import Link from "next/link"
 import { Button } from "./demo/components/ui/button"
 import CLICommandCopy from "./demo/components/ui/cli-command-copy"
 import ExamplesView from "./demo/examples/examples-view"
-import { BrandImage } from "./bucket/src/views/brand"
+import { BrandImageWithGradient } from "./bucket/src/views/brand"
 
 export default function Home() {
   return (
     <>
       <main className="flex min-h-screen flex-col items-center gap-6 sm:gap-8 py-12 sm:py-20 px-2 sm:px-8 mb-8">
-        <div className="sm:h-72 w-full overflow-hidden -mt-16 -mb-4 relative">
-          <div className="w-full h-1/3 absolute bottom-0 left-0 bg-gradient-to-t from-[rgba(255,255,255,1)] via-[rgba(255,255,255,0)] to-[rgba(255,255,255,0)] z-10"></div>
-          <div className="scale-80 sm:scale-[1.33] relative top-8 sm:top-16">
-            <BrandImage className="bottom-2" />
-          </div>
-        </div>
+        <BrandImageWithGradient />
         <h1 className="text-lg sm:text-xl md:text-3xl font-light text-center text-blue-500 pb-2 -mt-4">Maybe you don’t need a big cloud CMS...</h1>
         <h2 className="text-4xl sm:text-6xl text-center font-extrabold -mt-6 text-blue-600">How about a Bucket?</h2>
         <p className="sm:text-xl opacity-70 max-w-[960px] text-center px-4 pb-8 leading-normal sm:-mt-4">

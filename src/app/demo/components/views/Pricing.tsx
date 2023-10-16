@@ -1,10 +1,11 @@
 import Link from "next/link"
-import { PageHeading } from "@/app/bucket/src/views/brand"
+import { BrandImageWithGradient, PageHeading } from "@/app/bucket/src/views/brand"
 
 function Pricing() {
   return (
-    <>
-      <PageHeading>Pricing</PageHeading>
+    <div className="py-8">
+      <BrandImageWithGradient />
+      <PageHeading>Bucket CMS Pricing</PageHeading>
       <div className="p-8 bg-gray-100 rounded-[2rem] w-full max-w-[1040px] mx-auto my-12 text-left">
         <div className="grid grid-cols-2 py-12 gap-8 mx-auto relative -left-6">
           <div className="p-12 rounded-xl mb-6">
@@ -35,7 +36,7 @@ function Pricing() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

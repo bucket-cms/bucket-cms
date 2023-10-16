@@ -2,15 +2,15 @@
 import React, { useState } from "react"
 import { signIn } from "next-auth/react"
 import { Button } from "../ui/button"
-import { BrandImage, PageHeading } from "@/app/bucket/src/views/brand"
+import { BrandImageWithGradient, PageHeading } from "@/app/bucket/src/views/brand"
 import { cn } from "../ui/utils"
 
 function SignIn({ isTestEnv }: { isTestEnv: boolean }) {
   const [isLoading, setIsLoading] = useState(false)
   return (
     <div className={cn("flex flex-col grow min-h-screen transition-all delay-100 duration-1000 ease-out opacity-100", isLoading && "opacity-0")}>
-      <div className="grow text-center py-4">
-        <BrandImage />
+      <div className="grow text-center py-12">
+        <BrandImageWithGradient />
         <PageHeading>Welcome to Bucket</PageHeading>
         <p className="text-blue-800 opacity-70 font-medium pb-12 px-8">Please sign in with an authentication provider to access the demo</p>
         <div className="flex flex-col gap-4 w-[240px] mx-auto">
