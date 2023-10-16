@@ -45,7 +45,7 @@ function CollectionManage({ collection, collections }: { collection: Collection;
                     </>
                   )}
                 </Button>
-                <div className={cn("border-t transition-all ease-in-out grow", showDocs ? "w-full sm:w-1/2" : "w-full")}>
+                <div className={cn("border-t transition-all ease-in-out grow", showDocs ? "w-full sm:w-1/2 lg:min-w-[505px]" : "w-full")}>
                   {items.length === 0 && <CollectionManageEmpty collectionName={collection.name} />}
                   {items.map((item) => (
                     <CollectionManageItem key={item.itemId} item={item} collectionName={collection.name} />
@@ -64,7 +64,7 @@ function CollectionManage({ collection, collections }: { collection: Collection;
                 <div
                   className={cn(
                     "min-h-screen sm:min-h-0 bg-white sm:block px-4 sm:pl-12 overflow-auto relative transition-all ease-in-out",
-                    showDocs ? "absolute z-10 top-0 left-0 sm:static w-full sm:block sm:w-1/2 grow" : "hidden w-auto shrink"
+                    showDocs ? "absolute z-10 top-0 left-0 sm:static w-full sm:block sm:w-1/2 grow lg:min-w-[505px]" : "hidden w-auto shrink"
                   )}
                 >
                   {collection && showDocs && <CollectionDataDocumentation collection={collection} />}
