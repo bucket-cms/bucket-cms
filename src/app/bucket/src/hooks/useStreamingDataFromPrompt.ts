@@ -69,10 +69,16 @@ export const useStreamingDataFromPrompt = async ({
   }, 4000)
 
   while (!done) {
-    const { value, done: doneReading } = await reader.read()
-    done = doneReading
-    responseString += decoder.decode(value)
-    onData(responseString)
+    try {
+      const { value, done: doneReading } = await reader.read()
+      console.log("Received chunk:", decoder.decode(value))
+      console.log("Stream locked status:", stream.locked)
+      done = doneReading
+      responseString += decoder.decode(value)
+      onData(responseString)
+    } catch (error) {
+      console.error("Error reading from stream:", error)
+    }
   }
 
   if (done && onDone) {
