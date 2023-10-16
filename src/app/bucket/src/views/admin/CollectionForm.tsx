@@ -89,7 +89,7 @@ function CollectionForm({ collection = null }: { collection?: Collection | null 
         if (collection) {
           router.push("../../../")
         } else {
-          router.refresh()
+          window.location.reload()
         }
       }
     }
