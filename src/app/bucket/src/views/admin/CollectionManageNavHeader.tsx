@@ -14,7 +14,7 @@ function CollectionManageNavHeader({ otherCollections }: { otherCollections?: Co
 
   return (
     <div className="flex justify-center pt-12 pb-8 gap-2">
-      {otherCollections && otherCollections.length && (
+      {otherCollections && otherCollections.length > 0 && (
         <>
           <Link href="../../">
             <Button className="]bg-[rgba(255,255,255,.75)] hover:bg-white scale-110 sm:scale-100" variant="outline">
