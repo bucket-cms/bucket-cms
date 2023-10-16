@@ -24,7 +24,7 @@ export const useStreamingDataFromPrompt = async ({
 
   let payload = {
     messages: messages || [{ role: "user", content: prompt, model }],
-    model: model || "gpt-3.5-turbo",
+    model: model || "gpt-4",
   }
 
   const response = await fetch("/api/bucket/ai/stream", {
@@ -66,7 +66,7 @@ export const useStreamingDataFromPrompt = async ({
       done = true
       return
     }
-  }, 1000)
+  }, 4000)
 
   while (!done) {
     const { value, done: doneReading } = await reader.read()
