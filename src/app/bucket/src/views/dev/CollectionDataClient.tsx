@@ -16,7 +16,7 @@ const PublicAPI = () => (
 
 const PrivateAPI = () => (
   <>
-    <Badge className="scale-90 -ml-1 sm:ml-0 bg-black opacity-60 hover:bg-black hover:no-underline !no-underline whitespace-nowrap">Auth Required</Badge>
+    <Badge className="scale-90 -ml-1 sm:ml-0 bg-slate-500 hover:bg-slate-500 hover:no-underline !no-underline whitespace-nowrap">Auth Required</Badge>
     <div className="w-full pt-1 text-sm text-gray-500">Users need to be logged in in to use this API</div>
   </>
 )
@@ -129,7 +129,7 @@ function CollectionDataClient({ collection }: { collection: CollectionFieldsData
         </div>
         <div className="mt-12 pt-8 border-t">
           <div className="text-blue-600 text-2xl">
-            <div className="sm:inline-flex gap-2">
+            <div className="flex flex-wrap items-center gap-x-2">
               <div className="font-semibold">Update API</div>
               {collectionAccess && <>{collectionAccess.publicAllowWrite.includes(collection.name) ? <PublicAPI /> : <PrivateAPI />}</>}
             </div>
