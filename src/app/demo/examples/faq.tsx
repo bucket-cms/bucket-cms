@@ -127,7 +127,7 @@ export const FAQ = () => {
       <div className="grid grid-cols-3 gap-x-16">
         {data?.map((item: FAQItem) => {
           return (
-            <div className="pb-8">
+            <div key={item.itemId} className="pb-8">
               <div className="font-bold text-lg pb-2 text-blue-600">{item.data.Question.value}</div>
               <div className="prose prose-p:pb-4" dangerouslySetInnerHTML={{ __html: item.data.Answer.value }} />
             </div>

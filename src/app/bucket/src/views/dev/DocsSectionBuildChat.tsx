@@ -1,17 +1,20 @@
 import React, { useState } from "react"
 import { PaperPlaneIcon } from "@radix-ui/react-icons"
-import { Button, CodeBlock, Textarea, Loader } from "../../ui"
-import { CollectionFieldsData } from "../../types"
+import { Button, CodeBlock, DynamicComponentPreview, Textarea, Loader } from "../../ui"
+import { CollectionFieldsData, CollectionItemData } from "../../types"
 import { useStreamingDataFromPrompt } from "../../hooks/useStreamingDataFromPrompt"
 import { generateTypeScriptDataInterface, generateSamplePostDataItems } from "../../util"
 import Prism from "prismjs"
 import "prismjs/components/prism-typescript"
 
-function DocsSectionBuildChat({ collection, type }: { collection: CollectionFieldsData; type: "view" | "form" }) {
-  const [prompt, setPrompt] = useState(`Create a well designed React Component to ${type === "view" ? "view" : "enter and submit"} ${collection.name} data in TypeScript styled with Tailwind.`)
-  const [componentData, setComponentData] = useState<string>("")
+function DocsSectionBuildChat({ collection, items, type }: { collection: CollectionFieldsData; items: CollectionItemData[]; type: "view" | "form" }) {
+  const [prompt, setPrompt] = useState(
+    `Create a well designed React Component to ${type === "view" ? "view" : "enter and submit"} a single instance of ${collection.name} data in TypeScript styled with Tailwind.`
+  )
+  const [componentCode, setComponentCode] = useState<string>("")
   const [isGenerating, setIsGenerating] = useState(false)
   const [retryCount, setRetryCount] = useState(0)
+  const [showPreview, setShowPreview] = useState(false)
 
   const formattedCollectionName = collection.name.replace(/\b\w/g, (match) => match.toUpperCase()).replace(/\s+/g, "")
   const formattedComponentName = formattedCollectionName + type.replace(/\b\w/g, (match) => match.toUpperCase()).replace(/\s+/g, "")
@@ -24,12 +27,12 @@ function DocsSectionBuildChat({ collection, type }: { collection: CollectionFiel
 
   const enrichedPrompt =
     prompt +
-    ` Respond only in code that can be pasted directly into a TSX file. Do not include comments in the code. Only allow imports from react unless previously stated differently. Do not import CSS (use Tailwind only). Type the functional component as ${functionalComponentExample} - this is the TypeScript interface for ${formattedCollectionName} data: \n\n${generateTypeScriptDataInterface(
+    ` The component MUST be named ${formattedComponentName} .Respond only in code that can be pasted directly into a TSX file. Do not include comments in the code. Only allow imports from react unless previously stated differently. Do not import CSS (use Tailwind only). Type the functional component as ${functionalComponentExample} - this is the TypeScript interface for ${formattedCollectionName} data: \n\n${generateTypeScriptDataInterface(
       { ...collection, name: formattedCollectionName }
     )}${type === "form" ? formInstructions : ""}`
 
   function generateComponent() {
-    setComponentData("")
+    setComponentCode("")
     setIsGenerating(true)
 
     useStreamingDataFromPrompt({
@@ -38,7 +41,7 @@ function DocsSectionBuildChat({ collection, type }: { collection: CollectionFiel
         try {
           if (data) {
             const jsx = data.replace("```tsx", "").replace("```jsx", "").replace("```", "")
-            setComponentData(jsx)
+            setComponentCode(jsx)
           }
         } catch (error) {
           console.error("Parsing error:", error)
@@ -48,7 +51,7 @@ function DocsSectionBuildChat({ collection, type }: { collection: CollectionFiel
         setIsGenerating(false)
         try {
           const jsx = data.replace("```tsx", "").replace("```jsx", "").replace("```", "")
-          setComponentData(jsx)
+          setComponentCode(jsx)
           Prism.highlightAll()
         } catch (e) {
           console.error("Parsing error:", e)
@@ -64,6 +67,10 @@ function DocsSectionBuildChat({ collection, type }: { collection: CollectionFiel
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     generateComponent()
+  }
+
+  function preview() {
+    setShowPreview(true)
   }
 
   return (
@@ -95,7 +102,15 @@ function DocsSectionBuildChat({ collection, type }: { collection: CollectionFiel
           </Button>
         </div>
       </form>
-      {componentData && <CodeBlock copy={!isGenerating} code={componentData} />}
+      {showPreview && (
+        <div className="relative">
+          <Button className="absolute top-1 right-1 scale-90" onClick={() => setShowPreview(false)}>
+            Close Preview
+          </Button>
+          <DynamicComponentPreview componentName={formattedComponentName} componentCode={componentCode} componentData={items[0].data} />
+        </div>
+      )}
+      {componentCode && <CodeBlock copy={!isGenerating} preview={componentCode && !isGenerating ? preview : undefined} code={componentCode} />}
     </>
   )
 }

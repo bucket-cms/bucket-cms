@@ -1,15 +1,16 @@
 "use client"
 import React, { useEffect, useState } from "react"
 import { Badge, Tabs, TabsContent, TabsList, TabsTrigger, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../../ui"
-import { CollectionFieldsData } from "../../types"
+import { CollectionFieldsData, CollectionItemData } from "../../types"
 import CollectionDataClient from "./CollectionDataClient"
 import { generateTypeScriptInterface } from "../../util"
 import Prism from "prismjs"
 import "prismjs/components/prism-typescript"
 import TransitionWrapper from "../admin/TransitionWrapper"
 import DocsSectionBuild from "./DocsSectionBuild"
+import { INSPECT_MAX_BYTES } from "buffer"
 
-function CollectionDataDocumentation({ collection }: { collection: CollectionFieldsData }) {
+function CollectionDataDocumentation({ collection, items }: { collection: CollectionFieldsData; items: CollectionItemData[] }) {
   const [refresh, setRefresh] = useState(0)
 
   useEffect(() => {
@@ -64,7 +65,7 @@ function CollectionDataDocumentation({ collection }: { collection: CollectionFie
       </TabsContent>
       <TabsContent value="build">
         <TransitionWrapper>
-          <DocsSectionBuild collection={collection} />
+          <DocsSectionBuild collection={collection} items={items} />
         </TransitionWrapper>
       </TabsContent>
     </Tabs>

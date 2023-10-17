@@ -16,6 +16,8 @@ function CollectionManage({ collection, collections }: { collection: Collection;
   const router = useRouter()
   const { items, loading, error } = useFetchCollectionItems(collection.name)
 
+  console.log("items[0]", items[0])
+
   return (
     <>
       {!loading && (
@@ -67,7 +69,7 @@ function CollectionManage({ collection, collections }: { collection: Collection;
                     showDocs ? "absolute z-10 top-0 left-0 sm:static w-full sm:block sm:w-1/2 grow lg:min-w-[505px]" : "hidden w-auto shrink"
                   )}
                 >
-                  {collection && showDocs && <CollectionDataDocumentation collection={collection} />}
+                  {collection && showDocs && <CollectionDataDocumentation collection={collection} items={items} />}
                 </div>
               </div>
             </Transition>

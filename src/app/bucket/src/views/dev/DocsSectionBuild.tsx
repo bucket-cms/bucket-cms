@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { useAIConfigValidation } from "../../hooks"
 import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui"
 import DocsSectionBuildChat from "./DocsSectionBuildChat"
-import { CollectionFieldsData } from "../../types"
+import { CollectionFieldsData, CollectionItemData } from "../../types"
 
-function DocsSectionBuild({ collection }: { collection: CollectionFieldsData }) {
+function DocsSectionBuild({ collection, items }: { collection: CollectionFieldsData; items: CollectionItemData[] }) {
   const { configValidation, loading } = useAIConfigValidation()
 
   return (
@@ -33,10 +33,10 @@ function DocsSectionBuild({ collection }: { collection: CollectionFieldsData }) 
                 </TabsTrigger>
               </TabsList>
               <TabsContent value="view">
-                <DocsSectionBuildChat collection={collection} type="view" />
+                <DocsSectionBuildChat collection={collection} type="view" items={items} />
               </TabsContent>
               <TabsContent value="form">
-                <DocsSectionBuildChat collection={collection} type="form" />
+                <DocsSectionBuildChat collection={collection} type="form" items={items} />
               </TabsContent>
             </Tabs>
           )}
