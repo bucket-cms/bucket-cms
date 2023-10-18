@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.38.1",
-    "@types/babel__standalone": "^7.1.5"
+    "@types/babel__standalone": "^7.1.5",
+    "eslint-plugin-prettier": "^5.0.1"
   }
 }
