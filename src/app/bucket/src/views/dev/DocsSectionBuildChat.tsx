@@ -4,8 +4,12 @@ import { Button, CodeBlock, DynamicComponentPreview, Textarea, Loader } from "..
 import { CollectionFieldsData, CollectionItemData } from "../../types"
 import { useStreamingDataFromPrompt } from "../../hooks/useStreamingDataFromPrompt"
 import { generateTypeScriptDataInterface } from "../../util"
+import Editor from "react-simple-code-editor"
 import Prism from "prismjs"
+import "prismjs/components/prism-clike"
+import "prismjs/components/prism-javascript"
 import "prismjs/components/prism-typescript"
+import "prismjs/themes/prism.css"
 
 function DocsSectionBuildChat({ collection, items, type }: { collection: CollectionFieldsData; items: CollectionItemData[]; type: "view" | "form" }) {
   const [prompt, setPrompt] = useState(
@@ -96,7 +100,19 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
       <div className={`relative overflow-hidden transition-all ease-in-out ${componentCode && !isGenerating ? "h-[504px]" : "h-0"}`}>
         {componentCode && !isGenerating && <DynamicComponentPreview componentName={formattedComponentName} componentCode={componentCode} componentData={items[0].data} />}
       </div>
-      {componentCode && <CodeBlock copy={!isGenerating} code={componentCode} />}
+      {componentCode && (
+        <div className="border">
+          <Editor
+            value={componentCode}
+            onValueChange={(code) => {
+              setComponentCode(code)
+            }}
+            highlight={(code) => Prism.highlight(code, Prism.languages["typescript"], "tsx")}
+            style={{ padding: "0 4px", fontSize: "13px", fontFamily: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` }}
+            padding={10}
+          />
+        </div>
+      )}
     </>
   )
 }

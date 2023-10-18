@@ -20,15 +20,12 @@ export function DynamicComponentPreview({ componentName, componentCode, componen
       iframeDoc.head.appendChild(tailwindLink)
       iframeDoc.body.className = "flex items-center justify-center w-full h-full"
 
-      // Remove the 'export default' statement from the code
+      // Sanitize the component code
       const sanitizedCode = componentCode
-        .replace(/import .*;/g, "")
-        .replace(/^export default.*;$/m, "")
+        .replace(/import .*;?/g, "")
+        .replace(/^export default.*;?$/m, "")
         .replace(/```/g, "")
         .replace(/data.Date.value.toLocaleDateString\(\)/g, "new Date(data.Date.value).toLocaleDateString()")
-
-      console.log("sanitizedCode")
-      console.log(sanitizedCode)
 
       const transpiledCode = Babel.transform(sanitizedCode, {
         filename: "virtualFile.tsx",
@@ -43,14 +40,15 @@ export function DynamicComponentPreview({ componentName, componentCode, componen
       const reactDOMScript = iframeDoc.createElement("script")
       reactDOMScript.src = "https://unpkg.com/react-dom@17/umd/react-dom.development.js"
       reactDOMScript.onload = () => {
+        console.log("reactDOMScript onload triggered")
         const script = iframeDoc.createElement("script")
         script.type = "text/javascript"
         const innerHTML = `
-          const componentData = { data: ${JSON.stringify(componentData)} };
+          const renderProps = { data: ${JSON.stringify(componentData)} };
           ${transpiledCode}
-          ReactDOM.render(React.createElement(${componentName}, componentData), document.getElementById('root'));
+          ReactDOM.render(React.createElement(${componentName}, renderProps), document.getElementById('root'));
         `
-        console.log({ innerHTML })
+
         script.innerHTML = innerHTML
         iframeDoc.body.appendChild(script)
       }
@@ -58,5 +56,5 @@ export function DynamicComponentPreview({ componentName, componentCode, componen
     }
   }, [componentCode])
 
-  return <iframe className="w-full h-[504px] border" ref={iframeRef}></iframe>
+  return <iframe className="w-full h-[504px] border" ref={iframeRef} key={componentCode}></iframe>
 }
