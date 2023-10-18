@@ -5,10 +5,9 @@ import { z } from "zod"
 import { Input, Button } from "../ui"
 import { getHumanReadableId } from "../util"
 import { cn } from "../ui/utils"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.string().min(1, "Selection cannot be empty"),
-})
+const schema = FieldTypeSchemas.CollectionReference
 
 export type CollectionReferenceData = z.infer<typeof schema>
 

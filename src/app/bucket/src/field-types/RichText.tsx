@@ -5,15 +5,14 @@ import "react-quill/dist/quill.snow.css"
 import DOMPurify from "dompurify"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
+import { FieldTypeSchemas } from "./schemas"
+
+const schema = FieldTypeSchemas.RichText
 
 // Dynamically import Quill, but only on the client side
 const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false, // This will prevent Quill from being imported during SSR
   loading: () => <p>Loading editor...</p>,
-})
-
-const schema = z.object({
-  value: z.string().min(1, "Content cannot be empty"),
 })
 
 export type RichTextData = z.infer<typeof schema>

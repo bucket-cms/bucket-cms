@@ -8,7 +8,6 @@ import Prism from "prismjs"
 import "prismjs/components/prism-typescript"
 import TransitionWrapper from "../admin/TransitionWrapper"
 import DocsSectionBuild from "./DocsSectionBuild"
-import { INSPECT_MAX_BYTES } from "buffer"
 
 function CollectionDataDocumentation({ collection, items }: { collection: CollectionFieldsData; items: CollectionItemData[] }) {
   const [refresh, setRefresh] = useState(0)

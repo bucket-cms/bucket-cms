@@ -3,12 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Label, Input } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.string().min(1, "Metric cannot be empty"),
-  metric: z.string().min(1, "Metric cannot be empty"),
-})
-
+const schema = FieldTypeSchemas.Statistic
 export type StatisticData = z.infer<typeof schema>
 
 export const Statistic: FieldType<StatisticData> = {

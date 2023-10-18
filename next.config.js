@@ -11,6 +11,11 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // suppress Critical dependency warnings from webpack
+    config.module.exprContextCritical = false
+    return config
+  },
 }
 
 module.exports = nextConfig

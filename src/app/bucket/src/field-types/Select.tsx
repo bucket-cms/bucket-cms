@@ -3,10 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, SelectFieldTypeProps } from "../types"
 import { z } from "zod"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.string().min(1, "Content cannot be empty"),
-})
+const schema = FieldTypeSchemas.Select
 
 export type SelectData = z.infer<typeof schema>
 

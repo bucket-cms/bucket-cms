@@ -16,8 +16,6 @@ function CollectionManage({ collection, collections }: { collection: Collection;
   const router = useRouter()
   const { items, loading, error } = useFetchCollectionItems(collection.name)
 
-  console.log("items[0]", items[0])
-
   return (
     <>
       {!loading && (

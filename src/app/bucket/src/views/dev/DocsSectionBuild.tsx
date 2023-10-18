@@ -20,26 +20,7 @@ function DocsSectionBuild({ collection, items }: { collection: CollectionFieldsD
             {configValidation?.isAIConfigured ? <CheckCircledIcon /> : <CrossCircledIcon />}
             <span>OpenAI</span>
           </div>
-          {configValidation?.isAIConfigured && (
-            <Tabs defaultValue="view" className="w-full text-center pt-4">
-              <TabsList className="h-auto">
-                <TabsTrigger className="text-lg" value="view">
-                  <span className="font-mono scale-75 opacity-50 mr-px">{`<`}</span> {collection.name.replace(/\b\w/g, (match) => match.toUpperCase()).replace(/\s+/g, "")}View{" "}
-                  <span className="font-mono scale-75 opacity-50">{`/>`}</span>
-                </TabsTrigger>
-                <TabsTrigger className="text-lg" value="form">
-                  <span className="font-mono scale-75 opacity-50 mr-px">{`<`}</span> {collection.name.replace(/\b\w/g, (match) => match.toUpperCase()).replace(/\s+/g, "")}Form{" "}
-                  <span className="font-mono scale-75 opacity-50">{`/>`}</span>
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="view">
-                <DocsSectionBuildChat collection={collection} type="view" items={items} />
-              </TabsContent>
-              <TabsContent value="form">
-                <DocsSectionBuildChat collection={collection} type="form" items={items} />
-              </TabsContent>
-            </Tabs>
-          )}
+          {configValidation?.isAIConfigured && <DocsSectionBuildChat collection={collection} type="view" items={items} />}
           {configValidation?.isAIConfigured ?? <div className="py-12">Add an Open AI Key to your project’s environment variables to begin using AI to create components.</div>}
         </>
       )}

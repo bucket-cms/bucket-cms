@@ -3,10 +3,10 @@ import React, { useState, ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { Label, Input, Button } from "../ui"
 import { z } from "zod"
-import { fileSchema } from "./FileUpload" // Update to your FileUpload component path
 import { uploadFileAndGetURL } from "../util" // Ensure you have created this utility function
+import { FieldTypeSchemas } from "./schemas"
 
-const fileLibrarySchema = z.array(fileSchema)
+const fileLibrarySchema = FieldTypeSchemas.FileLibrary
 
 export type FileLibraryData = z.infer<typeof fileLibrarySchema>
 

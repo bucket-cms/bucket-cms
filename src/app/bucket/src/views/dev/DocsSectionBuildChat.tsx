@@ -16,6 +16,8 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
   const [retryCount, setRetryCount] = useState(0)
   const [showPreview, setShowPreview] = useState(false)
 
+  console.log(JSON.stringify({ collection }))
+
   const formattedCollectionName = collection.name.replace(/\b\w/g, (match) => match.toUpperCase()).replace(/\s+/g, "")
   const formattedComponentName = formattedCollectionName + type.replace(/\b\w/g, (match) => match.toUpperCase()).replace(/\s+/g, "")
 
@@ -75,7 +77,7 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2 py-4">
         <div className="h-24 pb-1">
           <Textarea
             value={prompt}

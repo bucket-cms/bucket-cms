@@ -3,15 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Input } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  street: z.string().min(1, "Street address cannot be empty"),
-  city: z.string().min(1, "City cannot be empty"),
-  state: z.string().min(1, "State cannot be empty"),
-  postalCode: z.string().min(1, "Postal code cannot be empty"),
-  country: z.string().min(1, "Country cannot be empty"),
-})
-
+const schema = FieldTypeSchemas.Address
 export type AddressData = z.infer<typeof schema>
 
 export const Address: FieldType<AddressData> = {

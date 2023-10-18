@@ -2,7 +2,7 @@
 import React from "react"
 import { Collection, ItemFormFieldData } from "../../types"
 import { isZodObjectOrArray } from "../../util"
-import * as FieldTypes from "../../field-types"
+import { FieldTypes } from "../../field-types"
 import { Label } from "../../ui"
 
 function ItemFormField({

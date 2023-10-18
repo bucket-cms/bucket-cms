@@ -3,11 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Input, Button } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.array(z.string().nonempty("Label cannot be empty")),
-})
-
+const schema = FieldTypeSchemas.Labels
 export type LabelsData = z.infer<typeof schema>
 
 const LabelsAdmin = ({ data, setData }: FieldTypeProps<LabelsData>): ReactElement => {

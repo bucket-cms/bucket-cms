@@ -1,7 +1,7 @@
 import { z } from "zod"
 import { ReactElement } from "react"
 import { AllFieldTypes } from "./field-types"
-import * as FieldTypesModule from "./field-types"
+import { FieldTypes as FieldTypesModule } from "./field-types"
 
 export interface ConfigValidation {
   hasAWSAccess: boolean

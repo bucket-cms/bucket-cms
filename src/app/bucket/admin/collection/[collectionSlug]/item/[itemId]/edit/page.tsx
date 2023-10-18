@@ -11,7 +11,7 @@ export default async function EditItemPage({ params }: { params: { collectionSlu
   return (
     <div className="pb-32 flex flex-col items-center gap-8">
       <PageHeading>Edit {collectionName} Item</PageHeading>
-      <ItemForm collectionName={collectionName} onCancel="../../../../admin" onComplete="../../../../admin" itemToEdit={itemData} />
+      <ItemForm collectionName={collectionName} onCancel="../../manage" onComplete="../../manage" itemToEdit={itemData} />
     </div>
   )
 }

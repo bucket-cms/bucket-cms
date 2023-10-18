@@ -1,6 +1,6 @@
 import { z } from "zod"
-import { Collection, ItemFormData, ItemFormFieldData } from "../types"
-import * as FieldTypes from "../field-types"
+import { Collection, ItemFormData } from "../types"
+import { getFieldTypeSchema } from "../field-types"
 
 interface ValidationResponse {
   allFieldsValid: boolean
@@ -24,19 +24,15 @@ export function validateFields(formData: ItemFormData, collection: Collection | 
       return
     }
 
-    const fieldTypeSchema = FieldTypes[fieldType as keyof typeof FieldTypes]?.schema
+    const fieldTypeSchema = getFieldTypeSchema(fieldType)
+
     if (fieldTypeSchema) {
       try {
         const validationResult = fieldTypeSchema.safeParse(field.data)
-        if (validationResult.success) {
-          return { isValid: true }
-        } else {
-          return {
-            isValid: false,
-            errorMessage: validationResult.error.issues[0]?.message || "Invalid data",
-          }
+        if (!validationResult.success) {
+          allFieldsValid = false
+          newErrors[index] = validationResult.error.issues[0]?.message || "Invalid data"
         }
-        // validation successful
       } catch (error: any) {
         allFieldsValid = false
         newErrors[index] = error.message[0]?.message || `Validation failed for ${field.name}`

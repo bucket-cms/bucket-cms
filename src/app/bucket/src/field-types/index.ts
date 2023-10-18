@@ -1,3 +1,22 @@
+import { Text, TextData } from "./Text"
+import { Labels, LabelsData } from "./Labels"
+import { DateField, DateData } from "./Date"
+import { SelectField, SelectData } from "./Select"
+import { Toggle, ToggleData } from "./Toggle"
+import { RichText, RichTextData } from "./RichText"
+import { Email, EmailData } from "./Email"
+import { Phone, PhoneData } from "./Phone"
+import { Address, AddressData } from "./Address"
+import { URL, URLData } from "./URL"
+import { Statistic, StatisticData } from "./Statistic"
+import { ImageUpload, ImageData } from "./ImageUpload"
+import { ImageGallery, ImageGalleryData } from "./ImageGallery"
+import { FileUpload, FileData } from "./FileUpload"
+import { FileLibrary, FileLibraryData } from "./FileLibrary"
+import { VideoEmbed, VideoEmbedData } from "./VideoEmbed"
+import { CollectionReference, CollectionReferenceData } from "./CollectionReference"
+import { FieldTypeSchemas } from "./schemas"
+
 export { Text } from "./Text"
 export { Labels } from "./Labels"
 export { DateField } from "./Date"
@@ -15,24 +34,6 @@ export { FileUpload } from "./FileUpload"
 export { FileLibrary } from "./FileLibrary"
 export { VideoEmbed } from "./VideoEmbed"
 export { CollectionReference } from "./CollectionReference"
-
-import { TextData } from "./Text"
-import { LabelsData } from "./Labels"
-import { DateData } from "./Date"
-import { SelectData } from "./Select"
-import { ToggleData } from "./Toggle"
-import { RichTextData } from "./RichText"
-import { URLData } from "./URL"
-import { EmailData } from "./Email"
-import { PhoneData } from "./Phone"
-import { AddressData } from "./Address"
-import { StatisticData } from "./Statistic"
-import { ImageData } from "./ImageUpload"
-import { ImageGalleryData } from "./ImageGallery"
-import { FileData } from "./FileUpload"
-import { FileLibraryData } from "./FileLibrary"
-import { VideoEmbedData } from "./VideoEmbed"
-import { CollectionReferenceData } from "./CollectionReference"
 
 export type AllFieldTypes =
   | TextData
@@ -52,3 +53,29 @@ export type AllFieldTypes =
   | FileLibraryData
   | VideoEmbedData
   | CollectionReferenceData
+
+const FieldTypes = {
+  Text: Text,
+  Labels: Labels,
+  DateField: DateField,
+  SelectField: SelectField,
+  Toggle: Toggle,
+  RichText: RichText,
+  Email: Email,
+  Phone: Phone,
+  Address: Address,
+  URL: URL,
+  Statistic: Statistic,
+  ImageUpload: ImageUpload,
+  ImageGallery: ImageGallery,
+  FileUpload: FileUpload,
+  FileLibrary: FileLibrary,
+  VideoEmbed: VideoEmbed,
+  CollectionReference: CollectionReference,
+}
+
+export { FieldTypes }
+
+export function getFieldTypeSchema(type: string) {
+  return FieldTypeSchemas[type as keyof typeof FieldTypeSchemas]
+}

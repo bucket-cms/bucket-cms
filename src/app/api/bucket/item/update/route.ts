@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { checkPublicWriteAccess } from "../../../../../app/bucket/src/util"
 import { readCollectionSchema, updateCollectionItem } from "../../s3/operations"
 import { validateFields } from "../../../../../app/bucket/src/util"
+import { ItemFormFieldData } from "../../../../../app/bucket/src/types"
+import { AllFieldTypes } from "../../../../../app/bucket/src/field-types"
 
 export async function PUT(req: NextRequest): Promise<void | NextResponse> {
   if (req.method === "PUT") {
@@ -21,7 +23,13 @@ export async function PUT(req: NextRequest): Promise<void | NextResponse> {
       }
 
       // Validate the item data
-      const { allFieldsValid, newErrors } = validateFields({ collectionName, fields: data }, collection)
+      const fields: ItemFormFieldData[] = Object.entries(data).map(([name, value]) => {
+        return {
+          name,
+          data: value as Partial<AllFieldTypes>,
+        }
+      })
+      const { allFieldsValid, newErrors } = validateFields({ collectionName, fields }, collection)
       if (!allFieldsValid) {
         return NextResponse.json({ error: "Validation failed", errors: newErrors }, { status: 400 })
       }

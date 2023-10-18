@@ -3,12 +3,11 @@ import React, { useState, ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { Label, Input, Button } from "../ui"
 import { z } from "zod"
-import { imageSchema } from "./ImageUpload"
 import { uploadImageAndGetURL } from "../util"
+import { FieldTypeSchemas } from "./schemas"
 
-const imageGallerySchema = z.array(imageSchema)
-
-export type ImageGalleryData = z.infer<typeof imageGallerySchema>
+const schema = FieldTypeSchemas.ImageGallery
+export type ImageGalleryData = z.infer<typeof schema>
 
 const ImageGalleryAdmin = ({ data, setData }: FieldTypeProps<ImageGalleryData>): ReactElement => {
   const [isUploading, setIsUploading] = useState(false)
@@ -90,7 +89,7 @@ const ImageGalleryAdmin = ({ data, setData }: FieldTypeProps<ImageGalleryData>):
 }
 
 const validateImageGallery = (data: ImageGalleryData) => {
-  const validationResult = imageGallerySchema.safeParse(data)
+  const validationResult = schema.safeParse(data)
   if (validationResult.success) {
     return { isValid: true }
   } else {
@@ -104,5 +103,5 @@ const validateImageGallery = (data: ImageGalleryData) => {
 export const ImageGallery: FieldType<ImageGalleryData> = {
   renderAdmin: (props) => <ImageGalleryAdmin {...props} />,
   validate: validateImageGallery,
-  schema: imageGallerySchema,
+  schema,
 }

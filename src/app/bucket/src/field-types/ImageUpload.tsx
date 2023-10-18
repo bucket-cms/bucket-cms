@@ -2,28 +2,20 @@
 import React, { useState, ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { Label, Input } from "../ui"
-import { z } from "zod"
 import { uploadImageAndGetURL } from "../util"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  url: z.string().url("Invalid image URL"),
-  width: z.number().min(0, "Missing image width"),
-  height: z.number().min(0, "Missing image height"),
-  alt: z.string(),
-})
-
-export const imageSchema = schema
-
+const schema = FieldTypeSchemas.ImageUpload
 export type ImageData = z.infer<typeof schema>
 
 const ImageAdmin = ({ data, setData }: FieldTypeProps<ImageData>): ReactElement => {
   const [isUploading, setIsUploading] = useState(false)
   const [uploadError, setUploadError] = useState<string | null>(null)
-  const [imageNaturalSize, setImageNaturalSize] = useState<{ width: number; height: number } | null>(null)
 
   const handleImageLoad = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const img = e.target as HTMLImageElement
-    setImageNaturalSize({ width: img.naturalWidth, height: img.naturalHeight })
+    console.log("handleImageLoad", { img })
+    setData({ ...data, width: img.naturalWidth, height: img.naturalHeight })
   }
 
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,14 +47,7 @@ const ImageAdmin = ({ data, setData }: FieldTypeProps<ImageData>): ReactElement 
     <div className="flex flex-col space-y-4">
       {data?.url && (
         <div className="image-preview space-y-2">
-          <img
-            className="rounded border mb-4"
-            src={data.url}
-            alt={data.alt || "Uploaded Image"}
-            onLoad={handleImageLoad}
-            width={imageNaturalSize?.width || data.width}
-            height={imageNaturalSize?.height || data.height}
-          />
+          <img className="rounded border mb-4" src={data.url} alt={data.alt || "Uploaded Image"} onLoad={handleImageLoad} width={data.width} height={data.height} />
           <div className="image-caption flex flex-col space-y-2">
             <Label className="block opacity-70 font-medium">Image Description</Label>
             <Input type="text" value={data?.alt || ""} onChange={(e) => setData && setData({ ...data, alt: e.target.value })} className="p-2 border rounded" />

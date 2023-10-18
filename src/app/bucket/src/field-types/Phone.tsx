@@ -3,18 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Input } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  countryCode: z
-    .string()
-    .regex(/^\+\d{1,3}$/, "Invalid country code format")
-    .min(1, "Country code cannot be empty"),
-  phoneNumber: z
-    .string()
-    .regex(/^[\d\s-()]+$/, "Invalid phone number format")
-    .min(1, "Phone number cannot be empty"),
-})
-
+const schema = FieldTypeSchemas.Phone
 export type PhoneData = z.infer<typeof schema>
 
 export const Phone: FieldType<PhoneData> = {

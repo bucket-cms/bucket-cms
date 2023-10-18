@@ -3,11 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Input } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.string().min(1, "Text cannot be empty"),
-})
-
+const schema = FieldTypeSchemas.Text
 export type TextData = z.infer<typeof schema>
 
 export const Text: FieldType<TextData> = {

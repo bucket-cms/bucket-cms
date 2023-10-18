@@ -1,6 +1,5 @@
 import { z } from "zod"
 import { Field, FieldKeys, CollectionFieldsData, SelectField } from "../types"
-import { getBucketName } from "@/app/api/bucket/s3/util"
 
 export function getDefaultDataFromSchema(schema: z.ZodType<any, any, any>): any {
   if (!schema) {
@@ -152,7 +151,7 @@ export const generateTypeScriptInterface = (collection: CollectionFieldsData) =>
     } else if (field.typeName === "RichText") {
       return `    '${field.name}': { value: string; }`
     } else if (field.typeName === "DateField") {
-      return `    '${field.name}': { value: Date; }`
+      return `    '${field.name}': { value: Date; } // string representation of a date. Convert to JavaScript Date object for date operations or rendering`
     } else if (field.typeName === "Labels") {
       return `    '${field.name}': { value: string[]; }`
     } else if (field.typeName === "URL") {
@@ -205,15 +204,15 @@ export const generateTypeScriptDataInterface = (collection: CollectionFieldsData
     if (field.typeName === "Text" || field.typeName === "Email") {
       return `    '${field.name}': { value: string; }`
     } else if (field.typeName === "RichText") {
-      return `    '${field.name}': { value: string; }`
+      return `    '${field.name}': { value: string; } // This value is HTML so should be rendered as HTML`
     } else if (field.typeName === "DateField") {
       return `    '${field.name}': { value: Date; }`
     } else if (field.typeName === "Labels") {
       return `    '${field.name}': { value: string[]; }`
     } else if (field.typeName === "URL") {
-      return `    '${field.name}': { value: string; }`
+      return `    '${field.name}': { value: string; } // this is a URL`
     } else if (field.typeName === "VideoEmbed") {
-      return `    '${field.name}': { value: string; }`
+      return `    '${field.name}': { value: string; } // this a vieo embed for YouTube or Vimeo`
     } else if (field.typeName === "CollectionReference") {
       return `    '${field.name}': { value: string; } // ${(field as SelectField).options[0]} collection item id`
     } else if (field.typeName === "Toggle") {
@@ -223,15 +222,15 @@ export const generateTypeScriptDataInterface = (collection: CollectionFieldsData
     } else if (field.typeName === "Address") {
       return `    '${field.name}': { street: string; city: string; state: string; postalCode: string; country: string; }`
     } else if (field.typeName === "ImageUpload") {
-      return `    '${field.name}': { url: string; alt: string; height: number; width: number; }`
+      return `    '${field.name}': { url: string; alt: string; height: number; width: number; } // this is an image`
     } else if (field.typeName === "ImageGallery") {
-      return `    '${field.name}': { url: string; alt: string; height: number; width: number; }[]`
+      return `    '${field.name}': { url: string; alt: string; height: number; width: number; }[] // this is an array of images`
     } else if (field.typeName === "FileUpload") {
-      return `    '${field.name}': { name: string; url: string; }`
+      return `    '${field.name}': { name: string; url: string; } // this is a file`
     } else if (field.typeName === "FileLibrary") {
-      return `    '${field.name}': { name: string; url: string; }[]`
+      return `    '${field.name}': { name: string; url: string; }[] // this is an array of files`
     } else if (field.typeName === "Statistic") {
-      return `    '${field.name}': { metric: string; value: string; }[]`
+      return `    '${field.name}': { metric: string; value: string; }[] // this is an array of statistics`
     } else if (field.typeName === "SelectField") {
       return `    '${field.name}': { value: ${(field as SelectField).options.map((item) => `"${item}"`).join(" | ")}; }`
     } else {

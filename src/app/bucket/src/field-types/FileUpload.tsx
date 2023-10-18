@@ -4,12 +4,9 @@ import { FieldType, FieldTypeProps } from "../types"
 import { Label, Input } from "../ui"
 import { z } from "zod"
 import { uploadFileAndGetURL } from "../util" // Ensure you have created this utility function
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  url: z.string().url("Invalid file URL"),
-  name: z.string(),
-})
-
+const schema = FieldTypeSchemas.FileUpload
 export const fileSchema = schema
 
 export type FileData = z.infer<typeof schema>

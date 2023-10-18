@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import * as FieldTypes from "../field-types"
+import { FieldTypes } from "../field-types"
 import { Collection, CollectionFieldsData, Field } from "../types"
 
 export const useCollectionFieldData = (collectionName: string) => {

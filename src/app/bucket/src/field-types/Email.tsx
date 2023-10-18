@@ -3,11 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Input } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.string().email("Invalid email address").min(1, "Email cannot be empty"),
-})
-
+const schema = FieldTypeSchemas.Email
 export type EmailData = z.infer<typeof schema>
 
 export const Email: FieldType<EmailData> = {

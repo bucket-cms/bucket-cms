@@ -3,11 +3,9 @@ import React, { ReactElement } from "react"
 import { FieldType, FieldTypeProps } from "../types"
 import { z } from "zod"
 import { Input } from "../ui"
+import { FieldTypeSchemas } from "./schemas"
 
-const schema = z.object({
-  value: z.string().refine((data) => !isNaN(Date.parse(data)), { message: "Invalid date format" }),
-})
-
+const schema = FieldTypeSchemas.Date
 export type DateData = z.infer<typeof schema>
 
 export const DateField: FieldType<DateData> = {
@@ -25,5 +23,5 @@ export const DateField: FieldType<DateData> = {
       }
     }
   },
-  schema,
+  schema: schema,
 }
