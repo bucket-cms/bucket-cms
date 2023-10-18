@@ -9,7 +9,7 @@ import "prismjs/components/prism-typescript"
 import TransitionWrapper from "../admin/TransitionWrapper"
 import DocsSectionBuild from "./DocsSectionBuild"
 
-function CollectionDataDocumentation({ collection, items }: { collection: CollectionFieldsData; items: CollectionItemData[] }) {
+function CollectionDataDocumentation({ collection, items }: { collection: CollectionFieldsData; items?: CollectionItemData[] }) {
   const [refresh, setRefresh] = useState(0)
 
   useEffect(() => {
@@ -62,11 +62,13 @@ function CollectionDataDocumentation({ collection, items }: { collection: Collec
           <CollectionDataClient collection={collection} />
         </TransitionWrapper>
       </TabsContent>
-      <TabsContent value="build">
-        <TransitionWrapper>
-          <DocsSectionBuild collection={collection} items={items} />
-        </TransitionWrapper>
-      </TabsContent>
+      {items && (
+        <TabsContent value="build">
+          <TransitionWrapper>
+            <DocsSectionBuild collection={collection} items={items} />
+          </TransitionWrapper>
+        </TabsContent>
+      )}
     </Tabs>
   )
 }

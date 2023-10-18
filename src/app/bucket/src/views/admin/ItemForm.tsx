@@ -5,7 +5,7 @@ import { getDefaultDataFromSchema, validateFields, getCollectionNamesFromFields 
 import { useCollectionFieldData, useFetchItemIds, useCreateItem, useUpdateItem } from "../../hooks"
 import { AllFieldTypes } from "../../field-types"
 import { TextData } from "../../field-types/Text"
-import * as FieldTypes from "../../field-types"
+import { FieldTypes } from "../../field-types"
 import { Transition } from "@headlessui/react"
 import ItemFormField from "./ItemFormField"
 import { useRouter } from "next/navigation"
