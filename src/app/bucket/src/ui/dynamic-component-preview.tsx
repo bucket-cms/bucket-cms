@@ -18,6 +18,7 @@ export function DynamicComponentPreview({ componentName, componentCode, componen
       tailwindLink.rel = "stylesheet"
       tailwindLink.href = "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" // Adjust version as needed
       iframeDoc.head.appendChild(tailwindLink)
+      iframeDoc.body.className = "flex items-center justify-center w-full h-full"
 
       // Remove the 'export default' statement from the code
       const sanitizedCode = componentCode
@@ -57,5 +58,5 @@ export function DynamicComponentPreview({ componentName, componentCode, componen
     }
   }, [componentCode])
 
-  return <iframe ref={iframeRef}></iframe>
+  return <iframe className="w-full h-[504px] border" ref={iframeRef}></iframe>
 }

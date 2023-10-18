@@ -1,7 +1,6 @@
 import React from "react"
 import { useAIConfigValidation } from "../../hooks"
 import { CheckCircledIcon, CrossCircledIcon } from "@radix-ui/react-icons"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui"
 import DocsSectionBuildChat from "./DocsSectionBuildChat"
 import { CollectionFieldsData, CollectionItemData } from "../../types"
 

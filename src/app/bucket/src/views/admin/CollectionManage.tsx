@@ -26,7 +26,7 @@ function CollectionManage({ collection, collections }: { collection: Collection;
               <h3 className="w-full text-center uppercase tracking-wide opacity-50 text-sm">Manage</h3>
               <h4 className="w-full text-center font-semibold text-4xl pb-6">{collection.name}</h4>
               <div
-                className={cn("flex w-full max-w-[1280px] relative mx-auto sm:my-4 p-4 sm:p-12 sm:divide-x sm:border rounded-xl sm:shadow transition-all ease-in-out", showDocs ? "gap-12" : "gap-8")}
+                className={cn("flex w-full 2xl:w-[1280px] relative mx-auto sm:my-4 p-4 sm:p-12 sm:divide-x sm:border rounded-xl sm:shadow transition-all ease-in-out", showDocs ? "gap-12" : "gap-8")}
               >
                 <Button
                   onClick={() => setShowDocs(!showDocs)}
@@ -64,7 +64,7 @@ function CollectionManage({ collection, collections }: { collection: Collection;
                 <div
                   className={cn(
                     "min-h-screen sm:min-h-0 bg-white sm:block px-4 sm:pl-12 overflow-auto relative transition-all ease-in-out",
-                    showDocs ? "absolute z-10 top-0 left-0 sm:static w-full sm:block sm:w-1/2 grow lg:min-w-[505px]" : "hidden w-auto shrink"
+                    showDocs ? "absolute z-10 top-0 left-0 sm:static w-full sm:block sm:w-1/2 grow lg:min-w-[520px]" : "hidden w-auto shrink"
                   )}
                 >
                   {collection && showDocs && <CollectionDataDocumentation collection={collection} items={items} />}

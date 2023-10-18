@@ -6,10 +6,9 @@ import { cn } from "./utils"
 interface CodeBlockProps {
   code: string
   copy?: boolean
-  preview?: () => void
 }
 
-export const CodeBlock: React.FC<CodeBlockProps> = ({ code, copy, preview }) => {
+export const CodeBlock: React.FC<CodeBlockProps> = ({ code, copy }) => {
   const [copied, setCopied] = useState(false)
 
   const copyToClipboard = (e: React.MouseEvent) => {
@@ -25,13 +24,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, copy, preview }) => 
   }
 
   return (
-    <div className="w-full relative mt-8">
-      <div className="absolute top-0 right-0 p-1 z-10 flex">
-        {Boolean(preview) && (
-          <Button className="scale-90" onClick={preview}>
-            Preview
-          </Button>
-        )}
+    <div className="w-full relative">
+      <div className="absolute top-0 right-0 p-3 z-10 flex">
         {copy && (
           <Button className={cn("scale-90", copied && "bg-green-600")} onClick={copyToClipboard}>
             {copied ? (
@@ -47,7 +41,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, copy, preview }) => 
         )}
       </div>
 
-      <pre className="!text-[13px] !text-left !bg-gray-100 p-2 opacity-80 overflow-auto rounded">
+      <pre className="!text-[13px] !text-left !bg-gray-100 border-l border-b border-r opacity-80 overflow-auto px-2 py-4 !mt-0">
         <code className="language-ts">{code}</code>
       </pre>
     </div>
