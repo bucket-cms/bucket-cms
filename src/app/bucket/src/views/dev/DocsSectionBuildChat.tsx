@@ -5,6 +5,7 @@ import { CollectionFieldsData, CollectionItemData } from "../../types"
 import { useStreamingDataFromPrompt } from "../../hooks/useStreamingDataFromPrompt"
 import { generateTypeScriptDataInterface } from "../../util"
 import Editor from "react-simple-code-editor"
+import { CopyToClipboard } from "../../ui/copy-to-clipboard"
 import Prism from "prismjs"
 import "prismjs/components/prism-clike"
 import "prismjs/components/prism-javascript"
@@ -145,7 +146,8 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
         {pendingCode && <DynamicComponentPreview componentName={formattedComponentName} componentCode={pendingCode} componentData={items[0].data} />}
       </div>
       {componentCode && (
-        <div className="border">
+        <div className="border relative">
+          {pendingCode && <CopyToClipboard className="absolute top-1 right-1 scale-90 z-10" textToCopy={componentCode} />}
           <Editor
             value={componentCode}
             onValueChange={(code) => {
