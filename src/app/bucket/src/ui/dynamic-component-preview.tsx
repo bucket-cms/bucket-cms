@@ -20,39 +20,52 @@ export function DynamicComponentPreview({ componentName, componentCode, componen
       iframeDoc.head.appendChild(tailwindLink)
       iframeDoc.body.className = "flex items-center justify-center w-full h-full"
 
-      // Sanitize the component code
-      const sanitizedCode = componentCode
-        .replace(/import .*;?/g, "")
-        .replace(/^export default.*;?$/m, "")
-        .replace(/```/g, "")
-        .replace(/data.Date.value.toLocaleDateString\(\)/g, "new Date(data.Date.value).toLocaleDateString()")
+      try {
+        // Sanitize the component code
+        const sanitizedCode = componentCode
+          .replace(/import .*;?/g, "")
+          .replace(/^export default.*;?$/m, "")
+          .replace(/```/g, "")
+          .replace(/data.Date.value.toLocaleDateString\(\)/g, "new Date(data.Date.value).toLocaleDateString()")
 
-      const transpiledCode = Babel.transform(sanitizedCode, {
-        filename: "virtualFile.tsx",
-        presets: ["react", "typescript"],
-      }).code
+        const transpiledCode = Babel.transform(sanitizedCode, {
+          filename: "virtualFile.tsx",
+          presets: ["react", "typescript"],
+        }).code
 
-      // Append React and ReactDOM scripts to the iframe for use within it
-      const reactScript = iframeDoc.createElement("script")
-      reactScript.src = "https://unpkg.com/react@17/umd/react.development.js"
-      iframeDoc.body.appendChild(reactScript)
+        // Append React and ReactDOM scripts to the iframe for use within it
+        const reactScript = iframeDoc.createElement("script")
+        reactScript.src = "https://unpkg.com/react@17/umd/react.development.js"
+        iframeDoc.body.appendChild(reactScript)
 
-      const reactDOMScript = iframeDoc.createElement("script")
-      reactDOMScript.src = "https://unpkg.com/react-dom@17/umd/react-dom.development.js"
-      reactDOMScript.onload = () => {
-        console.log("reactDOMScript onload triggered")
-        const script = iframeDoc.createElement("script")
-        script.type = "text/javascript"
-        const innerHTML = `
-          const renderProps = { data: ${JSON.stringify(componentData)} };
-          ${transpiledCode}
-          ReactDOM.render(React.createElement(${componentName}, renderProps), document.getElementById('root'));
-        `
+        const reactDOMScript = iframeDoc.createElement("script")
+        reactDOMScript.src = "https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+        reactDOMScript.onload = () => {
+          const script = iframeDoc.createElement("script")
+          script.type = "text/javascript"
+          const innerHTML = `
+            try {
+              const renderProps = { data: ${JSON.stringify(componentData)} };
+              ${transpiledCode}
+              ReactDOM.render(React.createElement(${componentName}, renderProps), document.getElementById('root'));
+            } catch (error) {
+              // Send error message to parent frame
+              window.parent.postMessage({ type: 'iframe-error', message: error.message }, '*');
+            }
+          `
+          script.innerHTML = innerHTML
+          iframeDoc.body.appendChild(script)
+        }
+        iframeDoc.body.appendChild(reactDOMScript)
 
-        script.innerHTML = innerHTML
-        iframeDoc.body.appendChild(script)
+        // Delay sending the success message to allow for potential errors
+        setTimeout(() => {
+          window.parent.postMessage({ type: "iframe-success" }, "*")
+        }, 200)
+      } catch (error: any) {
+        console.error("Transpilation error:", error.message)
+        // Handle error, e.g., prevent updating componentCode
       }
-      iframeDoc.body.appendChild(reactDOMScript)
     }
   }, [componentCode])
 

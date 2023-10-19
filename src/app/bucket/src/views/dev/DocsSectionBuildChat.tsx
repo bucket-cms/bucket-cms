@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { PaperPlaneIcon } from "@radix-ui/react-icons"
-import { Button, CodeBlock, DynamicComponentPreview, Textarea, Loader } from "../../ui"
+import { Button, DynamicComponentPreview, Textarea, Loader } from "../../ui"
 import { CollectionFieldsData, CollectionItemData } from "../../types"
 import { useStreamingDataFromPrompt } from "../../hooks/useStreamingDataFromPrompt"
 import { generateTypeScriptDataInterface } from "../../util"
@@ -16,6 +16,9 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
     `Create a well designed React Component to ${type === "view" ? "view" : "enter and submit"} a single instance of ${collection.name} data in TypeScript styled with Tailwind.`
   )
   const [componentCode, setComponentCode] = useState<string>("")
+  const [lastValidCode, setLastValidCode] = useState<string>("")
+  const [pendingCode, setPendingCode] = useState<string>("")
+
   const [isGenerating, setIsGenerating] = useState(false)
   const [retryCount, setRetryCount] = useState(0)
 
@@ -29,8 +32,48 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
       { ...collection, name: formattedCollectionName }
     )} If a data.Date.value is included, assume it is a string and not a Date object.`
 
+  const timeoutRef = useRef<number | null>(null)
+  function startTimer(code: string) {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
+    timeoutRef.current = window.setTimeout(() => {
+      setPendingCode(code)
+    }, 500)
+  }
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    function handleMessage(event: MessageEvent) {
+      if (event.data.type === "iframe-success") {
+        // Update lastValidCode with the current componentCode
+        setLastValidCode(componentCode)
+      } else if (event.data.type === "iframe-error") {
+        console.error("Received error from iframe:", event.data.message)
+        setPendingCode(lastValidCode) // Revert to last valid code
+        console.log("Reverting due to error: " + event.data.message)
+      }
+    }
+
+    window.addEventListener("message", handleMessage)
+
+    // Cleanup: remove event listener when component is unmounted
+    return () => {
+      window.removeEventListener("message", handleMessage)
+    }
+  }, [])
+
   function generateComponent() {
     setComponentCode("")
+    setPendingCode("")
     setIsGenerating(true)
 
     useStreamingDataFromPrompt({
@@ -50,6 +93,7 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
         try {
           const jsx = data.replace("```tsx", "").replace("```jsx", "").replace("```", "")
           setComponentCode(jsx)
+          setPendingCode(jsx)
           Prism.highlightAll()
         } catch (e) {
           console.error("Parsing error:", e)
@@ -98,18 +142,19 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
         </div>
       </form>
       <div className={`relative overflow-hidden transition-all ease-in-out ${componentCode && !isGenerating ? "h-[504px]" : "h-0"}`}>
-        {componentCode && !isGenerating && <DynamicComponentPreview componentName={formattedComponentName} componentCode={componentCode} componentData={items[0].data} />}
+        {pendingCode && <DynamicComponentPreview componentName={formattedComponentName} componentCode={pendingCode} componentData={items[0].data} />}
       </div>
       {componentCode && (
         <div className="border">
           <Editor
             value={componentCode}
             onValueChange={(code) => {
-              setComponentCode(code)
+              setComponentCode(code) // Update componentCode immediately
+              startTimer(code) // Start the timer to update pendingCode
             }}
             highlight={(code) => Prism.highlight(code, Prism.languages["typescript"], "tsx")}
-            style={{ padding: "0 4px", fontSize: "13px", fontFamily: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` }}
-            padding={10}
+            style={{ fontSize: "13px", fontFamily: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace` }}
+            padding={16}
           />
         </div>
       )}
