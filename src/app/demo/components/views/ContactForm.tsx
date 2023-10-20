@@ -47,46 +47,50 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 text-left py-8">
-        <div className="sm:col-span-2">
-          <Label className="text-base opacity-60" htmlFor="name">
-            What’s your name?
-          </Label>
-          <div>
-            <Input required type="text" name="name" id="name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
+      {success ? (
+        <div className="mt-12 text-xl text-green-500">Your message has been sent successfully!</div>
+      ) : (
+        <>
+          <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 text-left py-8">
+            <div className="sm:col-span-2">
+              <Label className="text-base opacity-60" htmlFor="name">
+                What’s your name?
+              </Label>
+              <div>
+                <Input required type="text" name="name" id="name" autoComplete="name" value={name} onChange={(e) => setName(e.target.value)} />
+              </div>
+            </div>
+            <div className="sm:col-span-2">
+              <Label className="text-base opacity-60" htmlFor="email">
+                Email (please)
+              </Label>
+              <div>
+                <Input required type="email" name="email" id="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </div>
+            </div>
+            <div className="sm:col-span-2">
+              <Label className="text-base opacity-60" htmlFor="message">
+                What’s up?
+              </Label>
+              <div className="border">
+                <Textarea required name="message" id="message" rows={4} value={message} onChange={(e) => setMessage(e.target.value)} />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="sm:col-span-2">
-          <Label className="text-base opacity-60" htmlFor="email">
-            Email (please)
-          </Label>
-          <div>
-            <Input required type="email" name="email" id="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          {errorMessage && <div className="mt-4 text-red-500">{errorMessage}</div>}
+          <div className="w-full flex justify-center">
+            {loading ? (
+              <Button className="h-auto text-xl py-3 px-8" type="button" disabled>
+                Sending...
+              </Button>
+            ) : (
+              <Button className="h-auto text-xl py-3 px-8" type="submit">
+                Send to Bucket
+              </Button>
+            )}
           </div>
-        </div>
-        <div className="sm:col-span-2">
-          <Label className="text-base opacity-60" htmlFor="message">
-            What’s up?
-          </Label>
-          <div className="border">
-            <Textarea required name="message" id="message" rows={4} value={message} onChange={(e) => setMessage(e.target.value)} />
-          </div>
-        </div>
-      </div>
-      <div className="w-full flex justify-center">
-        {loading ? (
-          <Button className="h-auto text-xl py-3 px-8" type="button" disabled>
-            Sending...
-          </Button>
-        ) : (
-          <Button className="h-auto text-xl py-3 px-8" type="submit">
-            Send to Bucket
-          </Button>
-        )}
-      </div>
-
-      {success && <div className="mt-4 text-green-500">Your message has been sent successfully!</div>}
-      {errorMessage && <div className="mt-4 text-red-500">{errorMessage}</div>}
+        </>
+      )}
     </form>
   )
 }

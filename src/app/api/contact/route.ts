@@ -39,7 +39,6 @@ export async function POST(req: NextRequest): Promise<void | NextResponse> {
     await sendgrid.send(content)
     return NextResponse.json({ message: "Email sent successfully!" }, { status: 200 })
   } catch (error: any) {
-    console.log({ error })
     return NextResponse.json({ error: `${error.message || "An error occurred"}` }, { status: 500 })
   }
 }
