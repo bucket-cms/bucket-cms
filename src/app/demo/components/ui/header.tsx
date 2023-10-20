@@ -25,13 +25,13 @@ const Header = async () => {
       <HeaderMobileMenu />
       <div className="hidden sm:flex grow items-center justify-between sm:pl-16 print:hidden">
         <div className="flex justify-start gap-4">
+          <Link href={sessionUser ? "/bucket/admin" : "/demo"}>
+            <Button className="bg-blue-600 hover:bg-blue-500 hover:scale-105">Try the Demo</Button>
+          </Link>
           <Link href={sessionUser ? "/bucket/docs" : "/docs"}>
             <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
               Documentation
             </Button>
-          </Link>
-          <Link href={sessionUser ? "/bucket/admin" : "/demo"}>
-            <Button className="bg-blue-600 hover:bg-blue-500 hover:scale-105">Try the Demo</Button>
           </Link>
           <Link href="/contact">
             <Button variant="ghost" className="text-gray-600 hover:text-blue-600">

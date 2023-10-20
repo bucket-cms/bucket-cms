@@ -17,13 +17,13 @@ const HeaderMobileMenu = () => {
       </div>
       {isMenuOpen && (
         <div className="flex-grow w-full border-b flex flex-col items-center sm:items-center sm:flex-row sm:flex-grow sm:pl-16 gap-4 pb-2 sm:pt-0">
+          <Link href="/demo">
+            <Button>Try the Demo</Button>
+          </Link>
           <Link href="/docs">
             <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
               Documentation
             </Button>
-          </Link>
-          <Link href="/demo">
-            <Button>Try the Demo</Button>
           </Link>
           <Link href="/contact">
             <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
