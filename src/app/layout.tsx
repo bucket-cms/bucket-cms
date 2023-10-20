@@ -17,8 +17,8 @@ export const metadata: Metadata = {
     icon: "/favicon-32x32.png",
   },
   openGraph: {
-    title: "Bucket CMS",
-    description: "Bucket CMS is the world’s first AI-Powered Portable Drop-in Headless CMS (no database necessary).",
+    title,
+    description,
     siteName: "Bucket CMS",
     images: [screenshot],
     url,
@@ -36,9 +36,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  keywords: ["headless cms", "cms", "content management system", "next.js cms", "react cms", "drop-in cms", "portable cms", "ai cms", "ai-powered cms"],
-  creator: "John Polacek",
-  publisher: "Bucket CMS",
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

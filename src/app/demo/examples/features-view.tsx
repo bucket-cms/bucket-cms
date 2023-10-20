@@ -2,7 +2,7 @@ import React from "react"
 
 const FeaturesView: React.FC = () => {
   return (
-    <section className="px-4 py-12 w-full max-w-[1100px] mx-auto grid md:grid-cols-3 gap-12">
+    <section className="px-4 py-12 w-full max-w-[1100px] mx-auto sm:grid md:grid-cols-3 gap-12">
       <div className="col-span-3 flex flex-col items-center">
         <h2 className="text-2xl sm:text-5xl font-extrabold text-blue-600 text-center md:text-left">The Portable Drop-In Headless CMS</h2>
         <h2 className="text-lg sm:text-3xl text-blue-500 text-center md:text-left py-8">No Database. No Problem.</h2>
