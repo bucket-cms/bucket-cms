@@ -30,9 +30,10 @@ export async function POST(req: NextRequest): Promise<void | NextResponse> {
 
     const content = {
       to: process.env.CONTACT_EMAIL, // Replace with your email
-      from: email, // Replace with the email you've set up on SendGrid
+      from: "contact@bucket-cms.com", // Replace with the email you've set up on SendGrid
       subject: `Bucket CMS Contact from ${name}`,
       text: `${message} \n\nSent from: ${name} ${email}`,
+      html: `${message} <br/><br/><strong>Sent from: ${name} ${email}</strong>`,
     }
 
     await sendgrid.send(content)
