@@ -12,55 +12,60 @@ const FeaturesView: React.FC = () => {
           <img className="w-full h-full" src="/images/icons/next-js.svg" alt="Next.js logo" width="100" height="100" />
         </div>
         <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Headless for Next.js</h3>
-        <p className="opacity-70">Headless CMS designed specifically for Next.js Project</p>
+        <p className="opacity-70">Headless CMS designed specifically for Next.js projects</p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/s3.svg" alt="" width="100" height="100" />
         </div>
         <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">S3 All Things</h3>
-        <p className="opacity-70">Use your S3 account for storing structured JSON content with version control, security, performance, portability and scalability.</p>
+        <p className="opacity-70">Use your S3 account for storing structured JSON content with version control, security, performance, portability and scalability</p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/cli.svg" alt="" width="100" height="100" />
         </div>
         <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Headless Drop-in</h3>
-        <p className="opacity-70">Install with a single command, set your env keys and deploy to start managing your content with built-in API routes and admin interface.</p>
+        <p className="opacity-70">Install with a single command, set your env keys and deploy to start managing your content with built-in API routes and admin interface</p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/no-cloud.svg" alt="" width="100" height="100" />
         </div>
         <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Own Your Admin</h3>
-        <p className="opacity-70">Stop sending admin off platform to manage data and eliminate recurring cloud service fees.</p>
+        <p className="opacity-70">Stop sending admin off platform and eliminate recurring cloud service fees</p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
-          <img className="w-full h-full scale-90" src="/images/icons/cli.svg" alt="" width="100" height="100" />
+          <img className="w-full h-full scale-90" src="/images/icons/open-ai.svg" alt="" width="100" height="100" />
         </div>
         <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Build with AI</h3>
-        <p className="opacity-70">Integrate with Chat GPT to let your CMS build and design your own custom component code displaying your data.</p>
+        <p className="opacity-70">Integrate with Open AI to build and design your own custom component code</p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/data.svg" alt="" width="100" height="100" />
         </div>
-        <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">On-the-fly Data Schema</h3>
-        <p className="opacity-70">Build your forms and let Bucket CMS generate your data schema.</p>
+        <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">On-The-Fly Data Schema</h3>
+        <p className="opacity-70">Build your forms then Bucket CMS will generate your data schema</p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/shield.svg" alt="" width="100" height="100" />
         </div>
         <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Type-safe Validation</h3>
-        <p className="opacity-70">Combines the speed and simplicity of flat files with the data integrity with Zod.</p>
+        <p className="opacity-70">
+          Combines the speed and simplicity of flat files with the data integrity with{" "}
+          <a className="text-blue-700" href="https://zod.dev/">
+            Zod
+          </a>
+        </p>
       </div>
       <div>
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/doc-gen.svg" alt="" width="100" height="100" />
         </div>
-        <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Auto-Generated Documentation</h3>
+        <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Auto-Generated Docs</h3>
         <p className="opacity-70">Streamline development for developers with automatically generated documentation.</p>
       </div>
       <div>
