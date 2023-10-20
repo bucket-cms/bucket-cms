@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "./demo/components/ui/button"
 import CLICommandCopy from "./demo/components/ui/cli-command-copy"
+import FeaturesView from "./demo/examples/features-view"
 import ExamplesView from "./demo/examples/examples-view"
 import { BrandImageWithGradient } from "./bucket/src/views/brand"
 
@@ -28,13 +29,9 @@ export default function Home() {
 
         <div className="md:grid grid-cols-2 sm:pt-16 my-4 md:my-8 w-full max-w-[1000px] mx-auto px-4 md:px-8 relative md:-left-[4%]">
           <div className="md:flex flex-col gap-4 md:gap-8 justify-center pb-8 md:pr-12">
-            <h3 className="text-2xl sm:text-3xl font-bold text-blue-600 text-center md:text-left">
-              The Drop-In Headless CMS: <br />
-              No Database, No Problem
-            </h3>
-            <p className="pt-6 pl-2 md:pt-0 md:pl-0 md:text-lg opacity-70">
-              Introducing an AI-Driven Drop-in Headless CMS experience for Next.js. On-the-fly data schema. Type-safe validation with Zod. Automatically generated documentation. Streamlined
-              development.
+            <h3 className="text-2xl sm:text-3xl font-bold text-blue-600 text-center md:text-left">Drop Bucket CMS into your Next.js App</h3>
+            <p className="pt-6 pl-2 md:pt-0 md:pl-0 md:text-lg pr-2 opacity-70">
+              On-the-fly data schema. Type-safe validation with Zod. Automatically generated documentation. Build components with AI. Streamlined development. Portable and performant.
             </p>
           </div>
           <div className="w-full md:w-[640px] border-4 border-blue-100 rounded-lg overflow-hidden mx-auto opacity-80">
@@ -49,6 +46,8 @@ export default function Home() {
             </video>
           </div>
         </div>
+
+        <FeaturesView />
 
         <ExamplesView />
 
