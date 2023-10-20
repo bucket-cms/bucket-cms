@@ -8,12 +8,14 @@ function ContactForm() {
   const [message, setMessage] = useState("")
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
+
     try {
-      const response = await fetch("/api/bucket/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,13 +28,20 @@ function ContactForm() {
       })
 
       if (!response.ok) {
-        throw new Error("Network response was not ok")
+        const data = await response.json()
+        throw new Error(data.message || "Network response was not ok")
       }
-      setSuccess(true) // Set success to true on successful form submission
-    } catch (error) {
-      console.error("There was an error:", error)
+
+      setSuccess(true)
+      setName("")
+      setEmail("")
+      setMessage("")
+      setErrorMessage("")
+    } catch (error: any) {
+      setSuccess(false)
+      setErrorMessage(error.message ? error.message : "There was an error. Please try again.")
     } finally {
-      setLoading(false) // Set loading to false once form submission is complete
+      setLoading(false)
     }
   }
 
@@ -77,6 +86,7 @@ function ContactForm() {
       </div>
 
       {success && <div className="mt-4 text-green-500">Your message has been sent successfully!</div>}
+      {errorMessage && <div className="mt-4 text-red-500">{errorMessage}</div>}
     </form>
   )
 }
