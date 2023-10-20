@@ -1,6 +1,11 @@
 # Bucket CMS
 
-Sometimes you don’t want a CMS, you just need a bucket. Bucket CMS is the lightest lightweight CMS around – ready for you to drop into your Next.js project. 
+### Maybe you don’t need a big cloud CMS... How about a Bucket?
+
+Bucket CMS is the world’s first AI-Powered Portable Drop-in Headless CMS designed for Next.js (no database necessary)
+
+Demo: [bucket-cms.com/demo](https://bucket-cms.com/demo)
+Docs: [bucket-cms.com/docs](https://bucket-cms.com/docs)
 
 ---
 
@@ -20,7 +25,7 @@ Once you have a Next.js project, you can create Bucket CMS inside it:
 npx create-bucket-cms
 ```
 
-For more info, check out the [Bucket CMS Docs](https://www.bucket-cms.com/demo)
+For more info, check out these links 
 
 
 
