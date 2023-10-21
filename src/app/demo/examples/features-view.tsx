@@ -25,7 +25,7 @@ const FeaturesView: React.FC = () => {
         <div className="shadow border rounded-lg px-8 w-24 h-16 flex items-center justify-center">
           <img className="w-full h-full scale-90" src="/images/icons/cli.svg" alt="" width="100" height="100" />
         </div>
-        <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Headless Drop-in</h3>
+        <h3 className="mt-6 text-2xl text-blue-600 font-medium pb-2">Drop-in and Go</h3>
         <p className="opacity-70">Install with a single command, set your env keys and deploy to start managing your content with built-in API routes and admin interface</p>
       </div>
       <div>
