@@ -46,23 +46,23 @@ function DocsSectionFetchingData() {
         modify, and manage your content as you see fit.
       </p>
 
-      <pre className="!opacity-80 !bg-gray-100 mb-4 text-base">
+      <pre className="!opacity-80 !bg-slate-100 mb-4 text-base">
         <code>/api/bucket/items/read?collectionName=FAQ&token=123</code>
       </pre>
       <div>
         <span className="italic">Parameters:</span>{" "}
         <ul className="-mt-1">
           <li>
-            <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the Collection
+            <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the Collection
           </li>
           <li>
-            <span className="bg-gray-100 rounded font-mono text-sm p-1">token</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
+            <span className="bg-slate-100 rounded font-mono text-sm p-1">token</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
           </li>
         </ul>
       </div>
       <p className="italic">Returns: CollectionItemData[]</p>
       <p>This API endpoint returns data for multiple Items in a Collection.</p>
-      <pre className="!opacity-100 !bg-gray-100">
+      <pre className="!opacity-100 !bg-slate-100">
         <code className="language-ts">{`interface CollectionItemData {
   itemId: string
   itemName: string

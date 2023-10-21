@@ -39,7 +39,7 @@ const FileAdmin = ({ data, setData }: FieldTypeProps<FileData>): ReactElement =>
       {data?.url && (
         <div className="file-info space-y-2">
           <Label className="block opacity-70 font-medium">File URL</Label>
-          <Input type="text" value={data.url} readOnly className="p-2 border rounded bg-gray-100" />
+          <Input type="text" value={data.url} readOnly className="p-2 border rounded bg-slate-100" />
 
           <Label className="block opacity-70 font-medium">File Name</Label>
           <Input type="text" value={data?.name || ""} onChange={(e) => setData && setData({ ...data, name: e.target.value })} className="p-2 border rounded" />

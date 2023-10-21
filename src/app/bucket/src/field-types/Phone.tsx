@@ -13,7 +13,7 @@ export const Phone: FieldType<PhoneData> = {
     return (
       <div className="flex space-x-2">
         <div className="w-28 relative rounded-lg border overflow-hidden">
-          <div className="bg-gray-100 absolute top-0 px-2 flex items-center h-full border-r pointer-events-none">+</div>
+          <div className="bg-slate-100 absolute top-0 px-2 flex items-center h-full border-r pointer-events-none">+</div>
           <Input
             maxLength={2}
             className="pl-8 pr-2"

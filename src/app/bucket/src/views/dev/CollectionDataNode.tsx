@@ -22,18 +22,18 @@ function CollectionDataNode({ collection }: { collection: CollectionFieldsData }
             <p>
               The <strong>readCollectionItem</strong> utility fetches data for a single Item in a Collection.
             </p>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{`const item: CollectionItemData = await readCollectionItem("${collection.name}", "123...")`}</code>
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
               <ul className="-mt-1">
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the
                   Collection
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">itemId</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">itemId</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
                 </li>
               </ul>
             </div>
@@ -41,18 +41,18 @@ function CollectionDataNode({ collection }: { collection: CollectionFieldsData }
             <p>
               The <strong>readCollectionItems</strong> utility fetches data for a multiple Items in a Collection.
             </p>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{`const items: CollectionItemData[] = await readCollectionItems("${collection.name}")`}</code>
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
               <ul className="-mt-1">
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the
                   Collection
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">token</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - Continuation token to mark
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">token</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - Continuation token to mark
                   pagination of results
                 </li>
               </ul>
@@ -66,23 +66,23 @@ function CollectionDataNode({ collection }: { collection: CollectionFieldsData }
             <p>
               The <strong>createCollectionItem</strong> utility adds a new Item to a Collection.
             </p>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{`const result = await creteCollectionItem("${collection.name}", "Your Item Name", data")`}</code>
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
               <ul className="-mt-1">
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the
                   Collection
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">itemName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The value for the name of
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">itemName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The value for the name of
                   the Item
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">data</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">Field[]</span> - An array of field data for the
-                  Item
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">data</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">Field[]</span> - An array of field data for
+                  the Item
                 </li>
               </ul>
             </div>
@@ -97,27 +97,27 @@ function CollectionDataNode({ collection }: { collection: CollectionFieldsData }
             <p>
               The <strong>updateCollectionItem</strong> utility updates data for a single Item in a Collection.
             </p>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{`const result = await updateCollectionItem("${collection.name}", "Your Item Name", data, "your-item-id")`}</code>
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
               <ul className="-mt-1">
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the
                   Collection
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">itemName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The value for the name of
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">itemName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The value for the name of
                   the Item
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">data</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">Field[]</span> - An array of field data for the
-                  Item
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">data</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">Field[]</span> - An array of field data for
+                  the Item
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">itemId</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The id of the Item (slugified
-                  version of itemName)
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">itemId</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
+                  (slugified version of itemName)
                 </li>
               </ul>
             </div>

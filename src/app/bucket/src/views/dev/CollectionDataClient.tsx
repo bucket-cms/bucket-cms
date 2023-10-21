@@ -54,16 +54,16 @@ function CollectionDataClient({ collection }: { collection: CollectionFieldsData
               <span className="italic">Parameters:</span>{" "}
               <ul className="-mt-1">
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the
                   Collection
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">itemId</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">itemId</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The id of the Item
                 </li>
               </ul>
             </div>
             <div className="italic">Response:</div>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{generateSampleDataItem(collection)}</code>
             </pre>
             <p>
@@ -74,24 +74,24 @@ function CollectionDataClient({ collection }: { collection: CollectionFieldsData
               in a Collection.
             </p>
             <div className="italic -mb-4">Endpoint:</div>
-            <pre className="!opacity-100 !bg-gray-100 mb-4">
+            <pre className="!opacity-100 !bg-slate-100 mb-4">
               <code className="font-bold">GET: /api/bucket/items/read?collectionName={encodeURIComponent(collection.name)}&token=123</code>
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
               <ul className="-mt-1">
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - The name of the
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">collectionName</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - The name of the
                   Collection
                 </li>
                 <li>
-                  <span className="bg-gray-100 rounded font-mono text-sm p-1">token</span> : <span className="bg-gray-100 rounded font-mono text-sm p-1">string</span> - Continuation token to mark
+                  <span className="bg-slate-100 rounded font-mono text-sm p-1">token</span> : <span className="bg-slate-100 rounded font-mono text-sm p-1">string</span> - Continuation token to mark
                   pagination
                 </li>
               </ul>
             </div>
             <div className="italic">Response:</div>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{generateSampleDataItems(collection)}</code>
             </pre>
           </div>
@@ -114,12 +114,12 @@ function CollectionDataClient({ collection }: { collection: CollectionFieldsData
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
-              <pre className="!opacity-100 !bg-gray-100">
+              <pre className="!opacity-100 !bg-slate-100">
                 <code className="language-ts">{generateSamplePostDataItems(collection)}</code>
               </pre>
             </div>
             <div className="italic">Response:</div>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{`{
   "success": true,
   "itemId": "${collection.name.toLowerCase().split(" ").join("-")}-id-slug"
@@ -145,12 +145,12 @@ function CollectionDataClient({ collection }: { collection: CollectionFieldsData
             </pre>
             <div>
               <span className="italic">Parameters:</span>{" "}
-              <pre className="!opacity-100 !bg-gray-100">
+              <pre className="!opacity-100 !bg-slate-100">
                 <code className="language-ts">{generateSamplePostDataItems(collection)}</code>
               </pre>
             </div>
             <div className="italic">Response:</div>
-            <pre className="!opacity-100 !bg-gray-100">
+            <pre className="!opacity-100 !bg-slate-100">
               <code className="language-ts">{`{
   "success": true,
   "itemId": "item-name-slug"

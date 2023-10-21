@@ -24,13 +24,13 @@ const CollectionReferenceAdmin: React.FC<CollectionReferenceFieldTypeProps<Colle
         ) : (
           <>
             <div className="flex gap-2 items-center">
-              <div className="text-sm opacity-60 px-4 font-medium bg-gray-100 border-r-gray-200 py-3">Find</div>
+              <div className="text-sm opacity-60 px-4 font-medium bg-slate-100 border-r-gray-200 py-3">Find</div>
               <Input className="shadow-none border-none focus:border-none !ring-0 pl-4" type="search" value={search} onChange={(e) => setSearch(e.target.value)} />
             </div>
             {search &&
               options.map((option, index) => (
                 <Button
-                  className="bg-transparent text-normal opacity-60 hover:bg-gray-100 py-3 h-auto"
+                  className="bg-transparent text-normal opacity-60 hover:bg-slate-100 py-3 h-auto"
                   key={index}
                   onClick={() => {
                     setData({ value: option })

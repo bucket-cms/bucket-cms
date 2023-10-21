@@ -126,7 +126,7 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
           />
         </div>
         <div className="flex justify-center mb-8">
-          <Button disabled={isGenerating} type="submit" className="disabled:opacity-100 disabled:bg-gray-300 relative flex gap-2 h-auto text-lg pl-8 pr-6">
+          <Button disabled={isGenerating} type="submit" className="disabled:opacity-100 disabled:bg-slate-300 relative flex gap-2 h-auto text-lg pl-8 pr-6">
             {isGenerating ? (
               <>
                 <span className="opacity-0">Generating...</span>

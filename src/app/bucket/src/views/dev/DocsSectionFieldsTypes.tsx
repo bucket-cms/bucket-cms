@@ -18,7 +18,7 @@ function DocsSectionFieldTypes() {
         </a>
         . Each Field Type is associated with a precise schema:
       </p>
-      <pre className="!opacity-100 !bg-gray-100 -mt-3">
+      <pre className="!opacity-100 !bg-slate-100 -mt-3">
         <code className="language-ts">{`export interface FieldType<T> {
   schema: z.ZodType<T, any, any>;
   renderAdmin: ({ data, setData, Component }: FieldTypeProps<T>) => ReactElement;

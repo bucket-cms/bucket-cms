@@ -34,7 +34,7 @@ function CollectionDataDocumentation({ collection, items }: { collection: Collec
         <TransitionWrapper>
           <div className="border rounded-xl bg-white w-full not-prose text-left my-6">
             <Table>
-              <TableHeader className="bg-gray-100">
+              <TableHeader className="bg-slate-100">
                 <TableRow>
                   <TableHead className="p-4">Field</TableHead>
                   <TableHead className="py-4">Type</TableHead>

@@ -61,7 +61,7 @@ const FileLibraryAdmin = ({ data, setData }: FieldTypeProps<FileLibraryData>): R
             </Button>
             <div className="file-info flex flex-col space-y-2">
               <Label className="block opacity-70 font-medium">File #{index + 1} URL</Label>
-              <Input type="text" value={fileData.url} readOnly className="p-2 border rounded bg-gray-100" />
+              <Input type="text" value={fileData.url} readOnly className="p-2 border rounded bg-slate-100" />
 
               <Label className="block opacity-70 font-medium">File #{index + 1} Name</Label>
               <Input type="text" value={fileData.name || ""} onChange={(e) => handleNameChange(e, index)} className="p-2 border rounded" />

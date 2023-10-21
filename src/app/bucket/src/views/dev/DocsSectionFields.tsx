@@ -19,7 +19,7 @@ function DocsSectionFields() {
         "Profile Image", and "Bio".
       </p>
       <p>Fields in Bucket CMS are structured based on the following interface format:</p>
-      <pre className="!opacity-100 !bg-gray-100 -mt-3">
+      <pre className="!opacity-100 !bg-slate-100 -mt-3">
         <code className="language-ts">{`export interface Field<T = any> {
   name: string
   typeName: keyof FieldType<T>

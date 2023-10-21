@@ -60,12 +60,12 @@ function ItemFormPreview({ collectionName, fields }: { collectionName: string; f
           </div>
         </TabsContent>
         <TabsContent value="schema">
-          <pre className="!opacity-100 rounded !bg-gray-50 text-left p-2 !text-sm">
+          <pre className="!opacity-100 rounded !bg-slate-50 text-left p-2 !text-sm">
             <code className="language-ts">{generateSampleDataItem(collection)}</code>
           </pre>
         </TabsContent>
         <TabsContent value="typescript">
-          <pre className="!opacity-100 rounded !bg-gray-50 text-left p-2 !text-sm">
+          <pre className="!opacity-100 rounded !bg-slate-50 text-left p-2 !text-sm">
             <code className="language-ts">{generateTypeScriptInterface(collection)}</code>
           </pre>
         </TabsContent>

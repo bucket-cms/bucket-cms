@@ -41,7 +41,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ code, copy }) => {
         )}
       </div>
 
-      <pre className="!text-[13px] !text-left !bg-gray-100 border-l border-b border-r opacity-80 overflow-auto px-2 py-4 !mt-0">
+      <pre className="!text-[13px] !text-left !bg-slate-100 border-l border-b border-r opacity-80 overflow-auto px-2 py-4 !mt-0">
         <code className="language-ts">{code}</code>
       </pre>
     </div>

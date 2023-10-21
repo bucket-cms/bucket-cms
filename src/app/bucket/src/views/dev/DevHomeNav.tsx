@@ -4,7 +4,7 @@ import DevHomeNavItem from "./DevHomeNavItem"
 
 function DevHomeNav({ collections, activeSection }: { collections: CollectionFieldsData[]; activeSection: string }) {
   return (
-    <nav className="hidden sm:block py-8 pl-10 pr-16 border-r max-w-[320px] bg-gray-50">
+    <nav className="hidden sm:block py-8 pl-10 pr-16 border-r max-w-[320px] bg-slate-50">
       <ul className="flex flex-col gap-8 min-h-[80vh]">
         <li>
           <h3 className="font-semibold text-xs uppercase opacity-50 pb-4">Quick Start</h3>

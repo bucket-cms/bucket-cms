@@ -20,7 +20,7 @@ const ExamplesView: React.FC = () => {
     <section className="px-4 py-12 w-full max-w-[960px] mx-auto">
       <h3 className="text-4xl font-extrabold italic text-blue-600 text-center pb-8">Perfect for...</h3>
       <div className="w-full flex flex-col justify-center gap-8">
-        <div className="w-full h-[160px] md:w-[720px] sm:h-[270px] md:h-[360px] overflow-hidden rounded-xl bg-gray-100 mx-auto flex justify-center pt-8 border relative">
+        <div className="w-full h-[160px] md:w-[720px] sm:h-[270px] md:h-[360px] overflow-hidden rounded-xl bg-slate-100 mx-auto flex justify-center pt-8 border relative">
           <div className="absolute z-10 top-0 left-0 w-full h-full bg-gradient-to-br from-white via-blue-200 to-blue-900 opacity-10"></div>
           <div
             className={`${

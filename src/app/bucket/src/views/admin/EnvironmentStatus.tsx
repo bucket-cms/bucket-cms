@@ -33,11 +33,11 @@ const EnvironmentStatus = ({ configValidation }: { configValidation: ConfigValid
           <span className="mr-2">AWS_S3_BUCKET_NAME</span>
         </div>
       </div>
-      <div className="max-w-4xl mx-auto mt-8 mb-32 px-8 prose flex flex-col gap-4">
+      <div className="max-w-4xl mx-auto mt-8 mb-32 px-8 prose flex flex-col gap-4 leading-relaxed">
         <h2 className="text-3xl font-bold opacity-80 mb-6">Connecting to AWS + S3</h2>
         <p className="mb-4">
           Environment variables are configurable key-value pairs that store private data like API keys, region specifications, and bucket names. Instead of hardcoding this sensitive information
-          directly into the application code, which poses security risks and lacks flexibility, we use environment variables to inject these values into the application.
+          directly into the application code, which poses security risks and lacks flexibility, we use environment variables to make these values available to the application.
         </p>
         {allMissing && hostname == "localhost" && (
           <p>
@@ -49,8 +49,8 @@ const EnvironmentStatus = ({ configValidation }: { configValidation: ConfigValid
           </p>
         )}
         <p>
-          Open the <code>env.local</code>
-          file at the root of your project and add the{" "}
+          Follow the instructions below, then open the <code className="text-sm bg-slate-200 p-1 rounded-sm">.env</code> or <code className="text-sm bg-slate-200 p-1 rounded-sm">.env.local</code> file
+          at the root of your project to add the{" "}
           <a className="underline text-blue-600" href="https://github.com/johnpolacek/bucket-cms/blob/main/.env.local.example">
             environment variables required by Bucket CMS
           </a>
@@ -92,7 +92,8 @@ const EnvironmentStatus = ({ configValidation }: { configValidation: ConfigValid
               <a className="underline text-blue-600" href="https://aws.amazon.com/blogs/security/how-to-find-update-access-keys-password-mfa-aws-management-console/">
                 this AWS article
               </a>
-              . Once you have the secret, add it to the <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> environment variables (see below).
+              . Once you have the secret, add it to the <code className="text-sm bg-slate-200 p-1 rounded-sm">AWS_ACCESS_KEY_ID</code> and{" "}
+              <code className="text-sm bg-slate-200 p-1 rounded-sm">AWS_SECRET_ACCESS_KEY</code> environment variables (see below).
             </p>
           </div>
         )}
@@ -104,7 +105,8 @@ const EnvironmentStatus = ({ configValidation }: { configValidation: ConfigValid
               <a className="underline text-blue-600" href="https://aws.amazon.com/blogs/security/how-to-find-update-access-keys-password-mfa-aws-management-console/">
                 this AWS article
               </a>
-              . Once you have the secret, add it to the <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> environment variables.
+              . Once you have the secret, add it to the <code className="text-sm bg-slate-200 p-1 rounded-sm">AWS_ACCESS_KEY_ID</code> and{" "}
+              <code className="text-sm bg-slate-200 p-1 rounded-sm">AWS_SECRET_ACCESS_KEY</code> environment variables.
             </p>
           </>
         )}
@@ -114,14 +116,16 @@ const EnvironmentStatus = ({ configValidation }: { configValidation: ConfigValid
             <p>
               This CMS relies on the availability of a single AWS S3 Storage Bucket to store all data and file assets. Bucket CMS can create the bucket for you, just come up with a unique bucket name
               and add it to to an
-              <code>AWS_S3_BUCKET_NAME</code> environment variable.
+              <code className="text-sm bg-slate-200 p-1 rounded-sm">AWS_S3_BUCKET_NAME</code> environment variable.
             </p>
           </>
         )}
         {!configValidation.hasAWSRegion && (
           <>
             <h3 className="text-2xl font-semibold opacity-70 mt-8 mb-4">AWS Region</h3>
-            <p>You can get the AWS region for your bucket from your S3 console. Add it to an AWS_REGION environment variable.</p>
+            <p>
+              You can get the AWS region for your bucket from your S3 console. Add it to an <code className="text-sm bg-slate-200 p-1 rounded-sm">AWS_REGION</code> environment variable.
+            </p>
           </>
         )}
       </div>

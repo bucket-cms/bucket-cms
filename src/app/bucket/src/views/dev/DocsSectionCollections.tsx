@@ -6,7 +6,7 @@ function DocsSectionCollections() {
       <p>A Collection is a set of related Items. Think of it as a table in a database. Each Collection has a defined schema that is determined by the Fields added by the admin user.</p>
       <p>Examples of collections would be Case Studies, Team Members, FAQs, Product Listings, Job Postings, Customer Testimonials or Portfolio Work Samples.</p>
       <p>Collections in Bucket CMS are structured based on the following interface format:</p>
-      <pre className="-mt-3 !opacity-100 !bg-gray-100">
+      <pre className="-mt-3 !opacity-100 !bg-slate-100">
         <code className="language-ts">{`export interface Collection<T = any> {
   name: string;
   fields: Field<T>[];
