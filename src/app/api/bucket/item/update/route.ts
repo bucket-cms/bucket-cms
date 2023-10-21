@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { checkPublicWriteAccess } from "../../../../../app/bucket/src/util"
+import { checkPublicWriteAccess } from "../../../auth/util"
 import { readCollectionSchema, updateCollectionItem } from "../../s3/operations"
 import { validateFields } from "../../../../../app/bucket/src/util"
 import { ItemFormFieldData } from "../../../../../app/bucket/src/types"

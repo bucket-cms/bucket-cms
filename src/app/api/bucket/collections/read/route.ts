@@ -1,4 +1,4 @@
-import { checkPublicReadAccess } from "../../../../bucket/src/util"
+import { checkPublicReadAccess } from "../../../auth/util"
 import { NextResponse } from "next/server"
 import { getBucketName } from "../../s3/util"
 import { readCollections } from "../../s3/operations"

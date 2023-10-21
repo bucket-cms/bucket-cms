@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { readCollectionSchema } from "../../s3/operations"
 import { Collection } from "../../../../../app/bucket/src/types"
-import { checkPublicReadAccess } from "../../../../bucket/src/util"
+import { checkPublicReadAccess } from "../../../auth/util"
 
 export async function GET(req: NextRequest): Promise<void | NextResponse> {
   const collectionName = req.nextUrl.searchParams.get("collectionName")

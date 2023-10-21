@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { checkPublicReadAccess } from "../../../../bucket/src/util"
+import { checkPublicReadAccess } from "../../../auth/util"
 import { getBucketName } from "../../s3/util"
 
 export async function GET(): Promise<void | NextResponse> {
