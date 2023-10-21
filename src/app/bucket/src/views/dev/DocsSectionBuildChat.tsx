@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
 import { PaperPlaneIcon } from "@radix-ui/react-icons"
-import { Button, DynamicComponentPreview, Textarea, Loader } from "../../ui"
+import { Button, DynamicComponentPreview, Textarea, LoadingAnimation } from "../../ui"
 import { CollectionFieldsData, CollectionItemData } from "../../types"
 import { useStreamingDataFromPrompt } from "../../hooks/useStreamingDataFromPrompt"
 import { generateTypeScriptDataInterface } from "../../util"
@@ -131,7 +131,7 @@ function DocsSectionBuildChat({ collection, items, type }: { collection: Collect
               <>
                 <span className="opacity-0">Generating...</span>
                 <div className="h-full w-full absolute top-0 left-0 flex items-center justify-center scale-125">
-                  <Loader />
+                  <LoadingAnimation />
                 </div>
               </>
             ) : (

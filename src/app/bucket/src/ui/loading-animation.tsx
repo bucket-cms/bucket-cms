@@ -1,6 +1,6 @@
 import React from "react"
 
-export const Loader = () => (
+export const LoadingAnimation = () => (
   <svg
     className="w-full h-full"
     width="72px"
