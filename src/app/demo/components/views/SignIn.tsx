@@ -2,7 +2,7 @@
 import React, { useState } from "react"
 import { signIn } from "next-auth/react"
 import { Button } from "../ui/button"
-import { BrandImageWithGradient, PageHeading } from "@/app/bucket/src/views/brand"
+import { BrandImageWithGradient, PageHeading } from "../../../bucket/src/views/brand"
 import { cn } from "../ui/utils"
 
 function SignIn({ isTestEnv }: { isTestEnv: boolean }) {

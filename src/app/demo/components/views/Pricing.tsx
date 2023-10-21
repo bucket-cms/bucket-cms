@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { BrandImageWithGradient, PageHeading } from "@/app/bucket/src/views/brand"
+import { BrandImageWithGradient, PageHeading } from "../../../bucket/src/views/brand"
 
 function Pricing() {
   return (

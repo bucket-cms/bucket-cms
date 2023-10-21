@@ -1,6 +1,6 @@
-import CollectionManage from "@/app/bucket/src/views/admin/CollectionManage"
+import CollectionManage from "../../../../src/views/admin/CollectionManage"
 import { Collection } from "../../../../src/types"
-import { readCollectionSchema, readCollectionCounts } from "@/app/api/bucket/s3/operations"
+import { readCollectionSchema, readCollectionCounts } from "../../../../../api/bucket/s3/operations"
 
 export default async function ManageCollectionPage({ params }: { params: { collectionSlug: string } }) {
   const collectionName = params.collectionSlug.replace(/_/g, " ")

@@ -1,6 +1,6 @@
 import CollectionForm from "../../../../src/views/admin/CollectionForm"
 import { Collection } from "../../../../src/types"
-import { readCollectionSchema } from "@/app/api/bucket/s3/operations"
+import { readCollectionSchema } from "../../../../../api/bucket/s3/operations"
 
 export default async function EditCollectionPage({ params }: { params: { collectionSlug: string } }) {
   const collectionName = params.collectionSlug.replace(/_/g, " ")

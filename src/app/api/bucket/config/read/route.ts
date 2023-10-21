@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { ConfigValidation } from "@/app/bucket/src/types"
+import { ConfigValidation } from "../../../../bucket/src/types"
 
 export async function GET(): Promise<void | NextResponse> {
   const hasAWSAccess = Boolean(process.env.AWS_ACCESS_KEY_ID)

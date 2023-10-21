@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 import { initializeS3Client, getBucketName } from "../../s3/util"
 import { PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3"
 import { Collection } from "../../../../bucket/src/types"
-import { checkPrivateWriteAccess } from "@/app/bucket/src/util"
+import { checkPrivateWriteAccess } from "../../../auth/util"
 
 export async function POST(req: NextRequest): Promise<void | NextResponse> {
   const { error, response } = await checkPrivateWriteAccess()

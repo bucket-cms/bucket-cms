@@ -1,8 +1,8 @@
 import type { Stripe } from "stripe"
 import Link from "next/link"
-import { PageHeading } from "@/app/bucket/src/views/brand"
+import { PageHeading } from "../../bucket/src/views/brand"
 import { stripe } from "../stripe/node-stripe"
-import Receipt from "@/app/demo/components/views/Receipt"
+import Receipt from "../../demo/components/views/Receipt"
 
 export default async function ResultPage({ searchParams }: { searchParams: { payment_intent: string } }): Promise<JSX.Element> {
   if (!searchParams.payment_intent) throw new Error("Please provide a valid payment_intent (`pi_...`)")

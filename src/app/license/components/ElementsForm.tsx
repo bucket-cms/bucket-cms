@@ -4,7 +4,7 @@ import type { StripeError } from "@stripe/stripe-js"
 
 import * as React from "react"
 import { useStripe, useElements, PaymentElement, Elements } from "@stripe/react-stripe-js"
-import { Label, Input, Button } from "@/app/bucket/src/ui"
+import { Label, Input, Button } from "../../bucket/src/ui"
 import getStripe from "../utils/get-stripejs"
 import { createPaymentIntent } from "../actions/stripe"
 

@@ -1,6 +1,6 @@
 import { ListObjectsV2Command } from "@aws-sdk/client-s3"
 import { initializeS3Client, getBucketName } from "../util"
-import { CollectionData } from "@/app/bucket/src/types"
+import { CollectionData } from "../../../../bucket/src/types"
 
 async function getCollectionNames(bucketName: string, s3: any): Promise<string[]> {
   const command = new ListObjectsV2Command({

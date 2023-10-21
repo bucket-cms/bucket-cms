@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { initializeS3Client, getBucketName } from "../../s3/util"
-import { checkPrivateWriteAccess } from "@/app/bucket/src/util"
+import { checkPrivateWriteAccess } from "../../../auth/util"
+
 import { CreateBucketCommand, DeletePublicAccessBlockCommand, PutBucketPolicyCommand } from "@aws-sdk/client-s3"
 
 export async function POST(req: NextRequest): Promise<void | NextResponse> {

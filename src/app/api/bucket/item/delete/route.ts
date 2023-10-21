@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { DeleteObjectCommand } from "@aws-sdk/client-s3"
-import { checkPrivateWriteAccess } from "@/app/bucket/src/util"
+import { checkPrivateWriteAccess } from "../../../auth/util"
 import { initializeS3Client, getBucketName } from "../../s3/util"
 
 export async function DELETE(req: NextRequest): Promise<void | NextResponse> {
