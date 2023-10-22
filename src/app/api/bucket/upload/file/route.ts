@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
+import { PutObjectCommand } from "@aws-sdk/client-s3"
 import { ALLOWED_MIME_TYPES } from "../../s3/allowed-mime-types"
 import { initializeS3Client, getBucketName } from "../../s3/util"
-import { checkPublicUploadAccess } from "../../../auth/util"
+import { checkPublicUploadAccess } from "../../auth/util"
 
 const MAX_FILE_SIZE = 20 * 1024 * 1024 // 20 MB
 
