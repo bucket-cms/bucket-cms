@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { initializeS3Client, getBucketName } from "../../s3/util"
-import { checkPrivateWriteAccess } from "../../../auth/util"
+import { checkPrivateWriteAccess } from "../../auth/util"
 
 import { CreateBucketCommand, DeletePublicAccessBlockCommand, PutBucketPolicyCommand } from "@aws-sdk/client-s3"
 

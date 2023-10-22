@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { readCollectionItemIDs } from "../../../s3/operations"
-import { checkPublicReadAccess } from "../../../../auth/util"
+import { checkPublicReadAccess } from "../../../auth/util"
 
 export async function GET(req: NextRequest): Promise<void | NextResponse> {
   const collectionName = req.nextUrl.searchParams.get("collectionName")

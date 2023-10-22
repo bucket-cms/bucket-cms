@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { getBucketName } from "../../s3/util"
 import { readCollectionCounts } from "../../s3/operations"
-import { checkPublicReadAccess } from "../../../auth/util"
+import { checkPublicReadAccess } from "../../auth/util"
 
 export async function GET(): Promise<void | NextResponse> {
   const { error, response } = await checkPublicReadAccess()
