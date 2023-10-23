@@ -41,7 +41,7 @@ function CollectionsIntro() {
               setIsCreatingCollection(true)
             }}
             size="lg"
-            className="bg-blue-600 hover:bg-blue-600 hover:scale-105 transition-all ease-in-out text-xl h-auto py-4"
+            className="text-white bg-blue-600 hover:bg-blue-600 hover:scale-105 transition-all ease-in-out text-xl h-auto py-4"
           >
             + Create Your First Collection
           </Button>

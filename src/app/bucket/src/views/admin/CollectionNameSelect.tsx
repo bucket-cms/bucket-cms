@@ -28,7 +28,7 @@ function CollectionNameSelect({ onSelect }: { onSelect: (collectionName: string)
             }
           }}
         />
-        <Button onClick={() => onSelect(collectionName)} className="h-auto bg-blue-600 hover:bg-blue-700 hover:scale-105 px-8 py-3 text-xl mt-4">
+        <Button onClick={() => onSelect(collectionName)} className="h-auto text-white bg-blue-600 hover:bg-blue-700 hover:scale-105 px-8 py-3 text-xl mt-4">
           Next <span className="font-thin scale-150 relative -top-[2px] left-3">»</span>
         </Button>
         <p className="text-sm text-center opacity-70 pt-8">Some examples of collection names are Case Studies, Testimonials, Featured Products, FAQs or Speaker Profiles</p>

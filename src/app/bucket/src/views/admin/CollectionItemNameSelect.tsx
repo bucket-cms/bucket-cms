@@ -32,7 +32,7 @@ function CollectionItemNameSelect({ onSelect }: { onSelect: (itemName: string) =
           onClick={() => {
             if (itemName) onSelect(itemName)
           }}
-          className="h-auto bg-blue-600 hover:bg-blue-700 hover:scale-105 px-8 py-3 text-xl mt-4"
+          className="h-auto text-white bg-blue-600 hover:bg-blue-700 hover:scale-105 px-8 py-3 text-xl mt-4"
         >
           Next <span className="font-thin scale-150 relative -top-[2px] left-3">»</span>
         </Button>
