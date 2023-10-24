@@ -6,7 +6,7 @@ import Footer from "./demo/components/ui/footer"
 import type { Metadata } from "next"
 
 const title = "Bucket CMS"
-const description = "Bucket CMS is the world’s first AI-Powered Portable Drop-in Headless CMS (no database necessary)."
+const description = "Bucket CMS is the world’s first Portable Drop-in AI-Enabled Headless CMS designed for Next.js (no database necessary)"
 const url = "https://bucket-cms.com"
 const screenshot = "https://bucket-cms.com/screenshot.jpg"
 

@@ -78,8 +78,8 @@ function CollectionFieldNewDialog({ isFirstField, onComplete }: { isFirstField?:
         <div className="flex flex-col items-end justify-end">
           <div>
             {step === 0 && (
-              <Button disabled={!fieldName} className="block text-xl px-8 py-3 h-auto" onClick={() => setStep(step + 1)}>
-                Next
+              <Button disabled={!fieldName} className="block bg-blue-600 text-white text-xl px-8 py-3 h-auto" onClick={() => setStep(step + 1)}>
+                Next <span className="font-thin scale-150 relative -top-[2px] left-3">»</span>
               </Button>
             )}
           </div>

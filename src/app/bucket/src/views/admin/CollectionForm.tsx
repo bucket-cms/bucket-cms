@@ -98,7 +98,7 @@ function CollectionForm({ collection = null }: { collection?: Collection | null 
   return (
     <>
       <Transition appear={true} show={true} enter="transition-all duration-300" enterFrom="opacity-0" enterTo="opacity-100">
-        <h3 className="text-center font-semibold text-3xl pt-8 sm:mt-0">{collection ? "Edit" : "Create"} Collection</h3>
+        <h3 className="text-center uppercase text-lg opacity-60 pb-4 sm:mt-0">{collection ? "Edit" : "Create"} Collection</h3>
       </Transition>
       {fields.length === 0 ? (
         <>

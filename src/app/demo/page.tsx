@@ -5,7 +5,7 @@ import { getSessionUser } from "../api/bucket/auth/get-session-user"
 import { redirect } from "next/navigation"
 
 const title = "Bucket CMS Demo"
-const description = "Try out Bucket CMS, the world’s first AI-Powered Portable Drop-in Headless CMS for Next.js"
+const description = "Try out Bucket CMS, the world’s first Portable Drop-in AI-Enabled Headless CMS designed for Next.js (no database necessary)"
 const screenshot = "https://bucket-cms.com/images/logo-tagline.jpg"
 const url = "https://bucket-cms.com/demo"
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     images: [
       {
         url: screenshot,
-        alt: "Maybe you don’t need a big cloud CMS... How about a bucket? Bucket CMS is the world’s first AI-Powered Portable Drop-in Headless CMS for Next.js",
+        alt: "Maybe you don’t need a big cloud CMS... How about a bucket? Bucket CMS is the world’s first Portable Drop-in AI-Enabled Headless CMS designed for Next.js",
         type: "image/jpeg",
         width: 1982,
         height: 1038,
