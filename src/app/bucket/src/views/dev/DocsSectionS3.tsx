@@ -16,6 +16,9 @@ function DocsSectionS3() {
         policy.
       </p>
       <p>
+        Next, go to Security Credentials for that user and click the “Create access key” button. Select ”Other” for your Use Case then continue to create the access key.
+      </p>
+      <p>
         Make sure to save the access key ID and secret access key or refer to the{" "}
         <a className="underline text-blue-600" href="https://aws.amazon.com/blogs/security/how-to-find-update-access-keys-password-mfa-aws-management-console/">
           AWS documentation
